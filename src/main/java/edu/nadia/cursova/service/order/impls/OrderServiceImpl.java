@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.order.impls;
 
-import edu.nadia.cursova.dao.order.impls.OrderDaoImplFake;
 import edu.nadia.cursova.dao.repository.OrderRepository;
 import edu.nadia.cursova.model.Order;
 import edu.nadia.cursova.service.order.interfaces.IOrderService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements IOrderService {
     @Autowired
-    OrderDaoImplFake dao;
-
-    @Autowired
     OrderRepository repository;
 
     @PostConstruct
     void init(){
-        List<Order> list = dao.getAll();
-
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
 
     @Override

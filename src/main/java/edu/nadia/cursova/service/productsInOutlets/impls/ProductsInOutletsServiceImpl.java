@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.productsInOutlets.impls;
 
-import edu.nadia.cursova.dao.productsInOutlets.impls.ProductsInOutletsDaoImplFake;
 import edu.nadia.cursova.dao.repository.ProductsInOutletsRepository;
 import edu.nadia.cursova.model.ProductsInOutlets;
 import edu.nadia.cursova.service.productsInOutlets.interfaces.IProductsInOutletsService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
     @Autowired
-    ProductsInOutletsDaoImplFake dao;
-
-    @Autowired
     ProductsInOutletsRepository repository;
 
     @PostConstruct
     void init(){
-        List<ProductsInOutlets> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

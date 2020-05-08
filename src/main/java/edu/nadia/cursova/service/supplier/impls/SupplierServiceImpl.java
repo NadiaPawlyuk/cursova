@@ -1,7 +1,6 @@
 package edu.nadia.cursova.service.supplier.impls;
 
 import edu.nadia.cursova.dao.repository.SupplierRepository;
-import edu.nadia.cursova.dao.supplier.impls.SupplierDaoImplFake;
 import edu.nadia.cursova.model.Supplier;
 import edu.nadia.cursova.service.supplier.interfaces.ISupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class SupplierServiceImpl implements ISupplierService {
     @Autowired
-    SupplierDaoImplFake dao;
-
-    @Autowired
     SupplierRepository repository;
 
     @PostConstruct
     void init(){
-        List<Supplier> list = dao.getAll();
-
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
 
     @Override

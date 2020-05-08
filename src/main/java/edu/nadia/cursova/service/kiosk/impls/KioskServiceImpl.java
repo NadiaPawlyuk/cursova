@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.kiosk.impls;
 
-import edu.nadia.cursova.dao.kiosk.impls.KioskDaoImplFake;
 import edu.nadia.cursova.dao.repository.KioskRepository;
 import edu.nadia.cursova.model.Kiosk;
 import edu.nadia.cursova.service.kiosk.interfaces.IKioskService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class KioskServiceImpl implements IKioskService {
     @Autowired
-    KioskDaoImplFake dao;
-
-    @Autowired
     KioskRepository repository;
 
     @PostConstruct
     void init(){
-        List<Kiosk> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

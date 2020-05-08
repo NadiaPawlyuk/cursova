@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.departmentStore.impls;
 
-import edu.nadia.cursova.dao.departmentStore.impls.DepartmentStoreDaoImplFake;
 import edu.nadia.cursova.dao.repository.DepartmentStoreRepository;
 import edu.nadia.cursova.model.DepartmentStore;
 import edu.nadia.cursova.service.departmentStore.interfaces.IDepartmentStoreService;
@@ -11,17 +10,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class DepartmentStoreServiceImpl implements IDepartmentStoreService {
-    @Autowired
-    DepartmentStoreDaoImplFake dao;
-
-    @Autowired
+   @Autowired
     DepartmentStoreRepository repository;
 
     @PostConstruct
     void init(){
-        List<DepartmentStore> list = dao.getAll();
-
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
 
     @Override

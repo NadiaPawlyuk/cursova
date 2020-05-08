@@ -1,7 +1,6 @@
 package edu.nadia.cursova.service.section.impls;
 
 import edu.nadia.cursova.dao.repository.SectionRepository;
-import edu.nadia.cursova.dao.section.impls.SectionDaoImplFake;
 import edu.nadia.cursova.model.Section;
 import edu.nadia.cursova.service.section.interfaces.ISectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class SectionServiceImpl implements ISectionService {
     @Autowired
-    SectionDaoImplFake dao;
-
-    @Autowired
     SectionRepository repository;
 
     @PostConstruct
     void init(){
-        List<Section> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

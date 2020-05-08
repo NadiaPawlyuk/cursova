@@ -1,7 +1,6 @@
 package edu.nadia.cursova.service.theHeadOfTheSection.impls;
 
 import edu.nadia.cursova.dao.repository.TheHeadOfTheSectionRepository;
-import edu.nadia.cursova.dao.theHeadOfTheSection.impls.TheHeadOfTheSectionDaoImplFake;
 import edu.nadia.cursova.model.TheHeadOfTheSection;
 import edu.nadia.cursova.service.theHeadOfTheSection.interfaces.ITheHeadOfTheSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionService {
     @Autowired
-    TheHeadOfTheSectionDaoImplFake dao;
-
-    @Autowired
     TheHeadOfTheSectionRepository repository;
 
     @PostConstruct
     void init(){
-        List<TheHeadOfTheSection> list = dao.getAll();
-
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.manager.impls;
 
-import edu.nadia.cursova.dao.manager.impls.ManagerDaoImplFake;
 import edu.nadia.cursova.dao.repository.ManagerRepository;
 import edu.nadia.cursova.model.Manager;
 import edu.nadia.cursova.service.manager.interfaces.IManagerService;
@@ -11,17 +10,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class ManagerServiceImpl implements IManagerService {
-    @Autowired
-    ManagerDaoImplFake dao;
-
-    @Autowired
+     @Autowired
     ManagerRepository repository;
 
     @PostConstruct
     void init(){
-        List<Manager> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

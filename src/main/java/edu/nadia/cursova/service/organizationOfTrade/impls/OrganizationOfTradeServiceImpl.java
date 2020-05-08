@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.organizationOfTrade.impls;
 
-import edu.nadia.cursova.dao.organizationOfTrade.impls.OrganizationOfTradeDaoImplFake;
 import edu.nadia.cursova.dao.repository.OrganizationOfTradeRepository;
 import edu.nadia.cursova.model.OrganizationOfTrade;
 import edu.nadia.cursova.service.organizationOfTrade.interfaces.IOrganizationOfTradeService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeService {
     @Autowired
-    OrganizationOfTradeDaoImplFake dao;
-
-    @Autowired
     OrganizationOfTradeRepository repository;
 
     @PostConstruct
     void init(){
-        List<OrganizationOfTrade> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

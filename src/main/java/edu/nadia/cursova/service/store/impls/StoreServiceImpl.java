@@ -1,7 +1,6 @@
 package edu.nadia.cursova.service.store.impls;
 
 import edu.nadia.cursova.dao.repository.StoreRepository;
-import edu.nadia.cursova.dao.store.impls.StoreDaoImplFake;
 import edu.nadia.cursova.model.Store;
 import edu.nadia.cursova.service.store.interfaces.IStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +10,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class StoreServiceImpl implements IStoreService {
-    @Autowired
-    StoreDaoImplFake dao;
-
-    @Autowired
+   @Autowired
     StoreRepository repository;
 
     @PostConstruct
     void init(){
-        List<Store> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

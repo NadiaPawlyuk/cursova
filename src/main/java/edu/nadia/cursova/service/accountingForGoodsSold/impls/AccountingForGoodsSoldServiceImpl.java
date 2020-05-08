@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.accountingForGoodsSold.impls;
 
-import edu.nadia.cursova.dao.accountingForGoodsSold.impls.AccountingForGoodsSoldDaoImplFake;
 import edu.nadia.cursova.dao.repository.AccountingForGoodsSoldRepository;
 import edu.nadia.cursova.model.AccountingForGoodsSold;
 import edu.nadia.cursova.service.accountingForGoodsSold.interfaces.IAccountingForGoodsSoldService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSoldService {
     @Autowired
-    AccountingForGoodsSoldDaoImplFake dao;
-
-    @Autowired
     AccountingForGoodsSoldRepository repository;
 
     @PostConstruct
     void init(){
-        List<AccountingForGoodsSold> list = dao.getAll();
-
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
     @Override
     public AccountingForGoodsSold save(AccountingForGoodsSold accountingForGoodsSold) {

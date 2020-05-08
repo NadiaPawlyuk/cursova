@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.productsFromSuppliers.impls;
 
-import edu.nadia.cursova.dao.productsFromSuppliers.impls.ProductsFromSuppliersDaoImplFake;
 import edu.nadia.cursova.dao.repository.ProductsFromSuppliersRepository;
 import edu.nadia.cursova.model.ProductsFromSuppliers;
 import edu.nadia.cursova.service.productsFromSuppliers.interfaces.IProductsFromSuppliersService;
@@ -11,17 +10,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class ProductsFromSuppliersServiceImpl implements IProductsFromSuppliersService {
-    @Autowired
-    ProductsFromSuppliersDaoImplFake dao;
-
-    @Autowired
+   @Autowired
     ProductsFromSuppliersRepository repository;
 
     @PostConstruct
     void init(){
-        List<ProductsFromSuppliers> list = dao.getAll();
-
-        repository.saveAll(list);
+       // repository.saveAll(list);
     }
 
     @Override

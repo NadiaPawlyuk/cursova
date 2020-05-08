@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.orderToTheSupplier.impls;
 
-import edu.nadia.cursova.dao.orderToTheSupplier.impls.OrderToTheSupplierDaoImplFake;
 import edu.nadia.cursova.dao.repository.OrderToTheSupplierRepository;
 import edu.nadia.cursova.model.OrderToTheSupplier;
 import edu.nadia.cursova.service.orderToTheSupplier.interfaces.IOrderToTheSupplierService;
@@ -12,16 +11,11 @@ import java.util.List;
 @Service
 public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService {
     @Autowired
-    OrderToTheSupplierDaoImplFake dao;
-
-    @Autowired
     OrderToTheSupplierRepository repository;
 
     @PostConstruct
     void init(){
-        List<OrderToTheSupplier> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override

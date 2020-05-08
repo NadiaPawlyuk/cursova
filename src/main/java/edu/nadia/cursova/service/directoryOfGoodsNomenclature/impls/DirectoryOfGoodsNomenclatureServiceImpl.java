@@ -1,6 +1,5 @@
 package edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls;
 
-import edu.nadia.cursova.dao.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureDaoImplFake;
 import edu.nadia.cursova.dao.repository.DirectoryOfGoodsNomenclatureRepository;
 import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.interfaces.IDirectoryOfGoodsNomenclatureService;
@@ -11,17 +10,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGoodsNomenclatureService {
-    @Autowired
-    DirectoryOfGoodsNomenclatureDaoImplFake dao;
-
-    @Autowired
+  @Autowired
     DirectoryOfGoodsNomenclatureRepository repository;
 
     @PostConstruct
     void init(){
-        List<DirectoryOfGoodsNomenclature> list = dao.getAll();
-
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
