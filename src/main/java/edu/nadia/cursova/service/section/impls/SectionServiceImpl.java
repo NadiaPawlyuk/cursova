@@ -14,14 +14,14 @@ public class SectionServiceImpl implements ISectionService {
     @Autowired
     SectionDaoImplFake dao;
 
-    @Autowired
-    SectionRepository repository;
+    //@Autowired
+    //SectionRepository repository;
 
     @PostConstruct
     void init(){
         List<Section> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class SectionServiceImpl implements ISectionService {
 
     @Override
     public Section get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Section> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class SectionServiceImpl implements ISectionService {
 
     @Override
     public Section delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Section section = this.get(id);
+        dao.getAll().remove(section);
+        return section;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

@@ -16,14 +16,14 @@ public class AccountingForBuyersServiceImpl implements IAccountingForBuyersServi
     @Autowired
     AccountingForBuyersDaoImplFake dao;
 
-    @Autowired
-    AccountingForBuyersRepository repository;
+    //@Autowired
+    //AccountingForBuyersRepository repository;
 
     @PostConstruct
     void init(){
         List<AccountingForBuyers> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -33,12 +33,15 @@ public class AccountingForBuyersServiceImpl implements IAccountingForBuyersServi
 
     @Override
     public AccountingForBuyers get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+        .findFirst().orElse(null);
+
     }
 
     @Override
     public List<AccountingForBuyers> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -48,8 +51,10 @@ public class AccountingForBuyersServiceImpl implements IAccountingForBuyersServi
 
     @Override
     public AccountingForBuyers delete(String id) {
-
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        AccountingForBuyers accountingForBuyers = this.get(id);
+        dao.getAll().remove(accountingForBuyers);
+        return accountingForBuyers;
+       // repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

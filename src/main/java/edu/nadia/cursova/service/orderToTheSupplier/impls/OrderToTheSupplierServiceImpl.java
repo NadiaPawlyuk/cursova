@@ -14,14 +14,14 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
     @Autowired
     OrderToTheSupplierDaoImplFake dao;
 
-    @Autowired
-    OrderToTheSupplierRepository repository;
+    //@Autowired
+    //OrderToTheSupplierRepository repository;
 
     @PostConstruct
     void init(){
         List<OrderToTheSupplier> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
 
     @Override
     public OrderToTheSupplier get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<OrderToTheSupplier> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
 
     @Override
     public OrderToTheSupplier delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        OrderToTheSupplier orderToTheSupplier = this.get(id);
+        dao.getAll().remove(orderToTheSupplier);
+        return orderToTheSupplier;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

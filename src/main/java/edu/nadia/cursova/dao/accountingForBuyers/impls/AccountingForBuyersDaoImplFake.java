@@ -17,7 +17,8 @@ public class AccountingForBuyersDaoImplFake implements IAccountingForBuyersDao {
 
     @Override
     public AccountingForBuyers save(AccountingForBuyers accountingForBuyers) {
-        return null;
+        dataSet.getAccountingForBuyers().add(accountingForBuyers);
+        return accountingForBuyers;
     }
 
     @Override

@@ -14,14 +14,14 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
     @Autowired
     ProductsInOutletsDaoImplFake dao;
 
-    @Autowired
-    ProductsInOutletsRepository repository;
+    //@Autowired
+    //ProductsInOutletsRepository repository;
 
     @PostConstruct
     void init(){
         List<ProductsInOutlets> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     @Override
     public ProductsInOutlets get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<ProductsInOutlets> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     @Override
     public ProductsInOutlets delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        ProductsInOutlets productsInOutlets = this.get(id);
+        dao.getAll().remove(productsInOutlets);
+        return productsInOutlets;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

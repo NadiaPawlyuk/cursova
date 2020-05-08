@@ -14,14 +14,14 @@ public class SellerServiceImpl implements ISellerService {
     @Autowired
     SellerDaoImplFake dao;
 
-    @Autowired
-    SellerRepository repository;
+    //@Autowired
+    //SellerRepository repository;
 
     @PostConstruct
     void init(){
         List<Seller> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class SellerServiceImpl implements ISellerService {
 
     @Override
     public Seller get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Seller> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class SellerServiceImpl implements ISellerService {
 
     @Override
     public Seller delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Seller seller = this.get(id);
+        dao.getAll().remove(seller);
+        return seller;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

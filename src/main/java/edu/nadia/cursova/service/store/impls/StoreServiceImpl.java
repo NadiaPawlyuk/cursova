@@ -14,14 +14,14 @@ public class StoreServiceImpl implements IStoreService {
     @Autowired
     StoreDaoImplFake dao;
 
-    @Autowired
-    StoreRepository repository;
+    //@Autowired
+    //StoreRepository repository;
 
     @PostConstruct
     void init(){
         List<Store> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public Store get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Store> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public Store delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Store store = this.get(id);
+        dao.getAll().remove(store);
+        return store;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

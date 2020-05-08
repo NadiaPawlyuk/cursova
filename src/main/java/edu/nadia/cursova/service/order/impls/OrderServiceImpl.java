@@ -14,14 +14,14 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     OrderDaoImplFake dao;
 
-    @Autowired
-    OrderRepository repository;
+    //@Autowired
+    //OrderRepository repository;
 
     @PostConstruct
     void init(){
         List<Order> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Order> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Order order = this.get(id);
+        dao.getAll().remove(order);
+        return order;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

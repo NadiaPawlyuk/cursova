@@ -14,14 +14,14 @@ public class KioskServiceImpl implements IKioskService {
     @Autowired
     KioskDaoImplFake dao;
 
-    @Autowired
-    KioskRepository repository;
+    //@Autowired
+    //KioskRepository repository;
 
     @PostConstruct
     void init(){
         List<Kiosk> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class KioskServiceImpl implements IKioskService {
 
     @Override
     public Kiosk get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Kiosk> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class KioskServiceImpl implements IKioskService {
 
     @Override
     public Kiosk delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Kiosk kiosk  = this.get(id);
+        dao.getAll().remove(kiosk);
+        return kiosk;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

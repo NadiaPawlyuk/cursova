@@ -14,14 +14,14 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
     @Autowired
     OrganizationOfTradeDaoImplFake dao;
 
-    @Autowired
-    OrganizationOfTradeRepository repository;
+    //@Autowired
+    //OrganizationOfTradeRepository repository;
 
     @PostConstruct
     void init(){
         List<OrganizationOfTrade> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
 
     @Override
     public OrganizationOfTrade get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<OrganizationOfTrade> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
 
     @Override
     public OrganizationOfTrade delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        OrganizationOfTrade organizationOfTrade = this.get(id);
+        dao.getAll().remove(organizationOfTrade);
+        return organizationOfTrade;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

@@ -14,14 +14,14 @@ public class HallServiceImpl implements IHallService {
     @Autowired
     HallDaoImplFake dao;
 
-    @Autowired
-    HallRepository repository;
+    //@Autowired
+    //HallRepository repository;
 
     @PostConstruct
     void init(){
         List<Hall> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class HallServiceImpl implements IHallService {
 
     @Override
     public Hall get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Hall> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class HallServiceImpl implements IHallService {
 
     @Override
     public Hall delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Hall hall  = this.get(id);
+        dao.getAll().remove(hall);
+        return hall;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

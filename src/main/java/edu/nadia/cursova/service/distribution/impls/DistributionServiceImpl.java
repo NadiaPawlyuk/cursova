@@ -14,14 +14,14 @@ public class DistributionServiceImpl implements IDistributionService {
     @Autowired
     DistributionDaoImplFake dao;
 
-    @Autowired
-    DistributionRepository repository;
+    //@Autowired
+    //DistributionRepository repository;
 
     @PostConstruct
     void init(){
         List<Distribution> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class DistributionServiceImpl implements IDistributionService {
 
     @Override
     public Distribution get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Distribution> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class DistributionServiceImpl implements IDistributionService {
 
     @Override
     public Distribution delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Distribution distribution = this.get(id);
+        dao.getAll().remove(distribution);
+        return distribution;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

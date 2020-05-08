@@ -14,14 +14,14 @@ public class ManagerServiceImpl implements IManagerService {
     @Autowired
     ManagerDaoImplFake dao;
 
-    @Autowired
-    ManagerRepository repository;
+    //@Autowired
+    //ManagerRepository repository;
 
     @PostConstruct
     void init(){
         List<Manager> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class ManagerServiceImpl implements IManagerService {
 
     @Override
     public Manager get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Manager> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class ManagerServiceImpl implements IManagerService {
 
     @Override
     public Manager delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Manager manager = this.get(id);
+        dao.getAll().remove(manager);
+        return manager;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

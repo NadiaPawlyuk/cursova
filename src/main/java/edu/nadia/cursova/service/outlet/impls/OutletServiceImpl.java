@@ -14,14 +14,14 @@ public class OutletServiceImpl implements IOutletService {
     @Autowired
     OutletDaoImplFake dao;
 
-    @Autowired
-    OutletRepository repository;
+    //@Autowired
+    //OutletRepository repository;
 
     @PostConstruct
     void init(){
         List<Outlet> list = dao.getAll();
 
-        repository.saveAll(list);
+       // repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class OutletServiceImpl implements IOutletService {
 
     @Override
     public Outlet get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Outlet> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class OutletServiceImpl implements IOutletService {
 
     @Override
     public Outlet delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Outlet outlet = this.get(id);
+        dao.getAll().remove(outlet);
+        return outlet;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

@@ -14,14 +14,14 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
     @Autowired
     TheHeadOfTheSectionDaoImplFake dao;
 
-    @Autowired
-    TheHeadOfTheSectionRepository repository;
+    //@Autowired
+    //TheHeadOfTheSectionRepository repository;
 
     @PostConstruct
     void init(){
         List<TheHeadOfTheSection> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
 
     @Override
     public TheHeadOfTheSection get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<TheHeadOfTheSection> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
 
     @Override
     public TheHeadOfTheSection delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        TheHeadOfTheSection theHeadOfTheSection = this.get(id);
+        dao.getAll().remove(theHeadOfTheSection);
+        return theHeadOfTheSection;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

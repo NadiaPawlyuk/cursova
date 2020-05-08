@@ -14,14 +14,14 @@ public class SupplierServiceImpl implements ISupplierService {
     @Autowired
     SupplierDaoImplFake dao;
 
-    @Autowired
-    SupplierRepository repository;
+    //@Autowired
+    //SupplierRepository repository;
 
     @PostConstruct
     void init(){
         List<Supplier> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public Supplier get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<Supplier> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public Supplier delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        Supplier supplier = this.get(id);
+        dao.getAll().remove(supplier);
+        return supplier;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

@@ -14,14 +14,14 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
     @Autowired
     AccountingForGoodsSoldDaoImplFake dao;
 
-    @Autowired
-    AccountingForGoodsSoldRepository repository;
+    //@Autowired
+    //AccountingForGoodsSoldRepository repository;
 
     @PostConstruct
     void init(){
         List<AccountingForGoodsSold> list = dao.getAll();
 
-        repository.saveAll(list);
+       //repository.saveAll(list);
     }
     @Override
     public AccountingForGoodsSold save(AccountingForGoodsSold accountingForGoodsSold) {
@@ -30,12 +30,14 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
 
     @Override
     public AccountingForGoodsSold get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<AccountingForGoodsSold> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -45,7 +47,10 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
 
     @Override
     public AccountingForGoodsSold delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        AccountingForGoodsSold accountingForGoodsSold = this.get(id);
+        dao.getAll().remove(accountingForGoodsSold);
+        return accountingForGoodsSold;
+        //  repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }

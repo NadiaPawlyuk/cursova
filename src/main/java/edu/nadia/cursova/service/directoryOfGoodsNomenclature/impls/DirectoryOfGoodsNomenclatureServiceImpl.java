@@ -14,14 +14,14 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
     @Autowired
     DirectoryOfGoodsNomenclatureDaoImplFake dao;
 
-    @Autowired
-    DirectoryOfGoodsNomenclatureRepository repository;
+    //@Autowired
+    //DirectoryOfGoodsNomenclatureRepository repository;
 
     @PostConstruct
     void init(){
         List<DirectoryOfGoodsNomenclature> list = dao.getAll();
 
-        repository.saveAll(list);
+        //repository.saveAll(list);
     }
 
     @Override
@@ -31,12 +31,14 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
 
     @Override
     public DirectoryOfGoodsNomenclature get(String id) {
-        return null;
+        return dao.getAll().stream().filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
     public List<DirectoryOfGoodsNomenclature> getAll() {
-        return repository.findAll();
+        return dao.getAll();
+        //return repository.findAll();
     }
 
     @Override
@@ -46,7 +48,10 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
 
     @Override
     public DirectoryOfGoodsNomenclature delete(String id) {
-        repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = this.get(id);
+        dao.getAll().remove(directoryOfGoodsNomenclature);
+        return directoryOfGoodsNomenclature;
+        //repository.deleteById(id);
+        //return repository.findById(id).orElse(null);
     }
 }
