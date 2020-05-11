@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class ManagerServiceImpl implements IManagerService {
@@ -20,7 +21,9 @@ public class ManagerServiceImpl implements IManagerService {
 
     @Override
     public Manager save(Manager manager) {
-        return null;
+        manager.setDateOfCreation(LocalDateTime.now());
+        manager.setDateOfModified(LocalDateTime.now());
+        return repository.save(manager);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class ManagerServiceImpl implements IManagerService {
 
     @Override
     public Manager edit(Manager manager) {
-        return null;
+        manager.setDateOfModified(LocalDateTime.now());
+        return repository.save(manager);
     }
 
     @Override
     public Manager delete(String id) {
+        Manager manager = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return manager;
     }
 }

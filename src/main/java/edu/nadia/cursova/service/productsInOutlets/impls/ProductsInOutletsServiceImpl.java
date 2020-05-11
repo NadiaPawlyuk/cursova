@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
@@ -20,7 +21,9 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     @Override
     public ProductsInOutlets save(ProductsInOutlets productsInOutlets) {
-        return null;
+        productsInOutlets.setDateOfCreation(LocalDateTime.now());
+        productsInOutlets.setDateOfModified(LocalDateTime.now());
+        return repository.save(productsInOutlets);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     @Override
     public ProductsInOutlets edit(ProductsInOutlets productsInOutlets) {
-        return null;
+        productsInOutlets.setDateOfModified(LocalDateTime.now());
+        return repository.save(productsInOutlets);
     }
 
     @Override
     public ProductsInOutlets delete(String id) {
+        ProductsInOutlets productsInOutlets = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return productsInOutlets;
     }
 }

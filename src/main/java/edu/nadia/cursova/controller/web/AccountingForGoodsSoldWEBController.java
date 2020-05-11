@@ -16,19 +16,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/web/organization/")
+@RequestMapping("/web/AccountingForGoodsSold")
 public class AccountingForGoodsSoldWEBController {
     @Autowired
     AccountingForGoodsSoldServiceImpl service;
 
-    @RequestMapping("/AccountingForGoodsSoldController")
+    @RequestMapping("/get/list")
     String getAll(Model model)
     {
         model.addAttribute("accountingForGoodsSold", service.getAll());
         return "accountingForGoodsSoldList";
     }
 
-    @RequestMapping("/AccountingForGoodsSoldController/delete/{id}")
+    @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
         service.delete(id);

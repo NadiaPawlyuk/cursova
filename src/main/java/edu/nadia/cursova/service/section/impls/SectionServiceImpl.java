@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class SectionServiceImpl implements ISectionService {
@@ -20,7 +21,9 @@ public class SectionServiceImpl implements ISectionService {
 
     @Override
     public Section save(Section section) {
-        return null;
+        section.setDateOfCreation(LocalDateTime.now());
+        section.setDateOfModified(LocalDateTime.now());
+        return repository.save(section);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class SectionServiceImpl implements ISectionService {
 
     @Override
     public Section edit(Section section) {
-        return null;
+        section.setDateOfModified(LocalDateTime.now());
+        return repository.save(section);
     }
 
     @Override
     public Section delete(String id) {
+        Section section = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return section;
     }
 }

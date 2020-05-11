@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class KioskServiceImpl implements IKioskService {
@@ -20,7 +21,9 @@ public class KioskServiceImpl implements IKioskService {
 
     @Override
     public Kiosk save(Kiosk kiosk) {
-        return null;
+        kiosk.setDateOfCreation(LocalDateTime.now());
+        kiosk.setDateOfModified(LocalDateTime.now());
+        return repository.save(kiosk);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class KioskServiceImpl implements IKioskService {
 
     @Override
     public Kiosk edit(Kiosk kiosk) {
-        return null;
+        kiosk.setDateOfModified(LocalDateTime.now());
+        return repository.save(kiosk);
     }
 
     @Override
     public Kiosk delete(String id) {
+        Kiosk kiosk = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return kiosk;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionService {
@@ -20,7 +21,9 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
 
     @Override
     public TheHeadOfTheSection save(TheHeadOfTheSection theHeadOfTheSection) {
-        return null;
+        theHeadOfTheSection.setDateOfCreation(LocalDateTime.now());
+        theHeadOfTheSection.setDateOfModified(LocalDateTime.now());
+        return repository.save(theHeadOfTheSection);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
 
     @Override
     public TheHeadOfTheSection edit(TheHeadOfTheSection theHeadOfTheSection) {
-        return null;
+        theHeadOfTheSection.setDateOfModified(LocalDateTime.now());
+        return repository.save(theHeadOfTheSection);
     }
 
     @Override
     public TheHeadOfTheSection delete(String id) {
+        TheHeadOfTheSection theHeadOfTheSection = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return theHeadOfTheSection;
     }
 }

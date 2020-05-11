@@ -15,19 +15,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/web/organization")
+@RequestMapping("/web/OrganizationOfTrade")
 public class OrganizationOfTradeWEBController {
    @Autowired
     OrganizationOfTradeServiceImpl service;
 
-    @RequestMapping("/OrganizationOfTrade")
+    @RequestMapping("/get/list")
     String getAll(Model model)
     {
         model.addAttribute("organizationOfTrade", service.getAll());
         return "organizationOfTradeList";
     }
 
-    @RequestMapping("/OrganizationOfTrade/delete/{id}")
+    @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
         service.delete(id);

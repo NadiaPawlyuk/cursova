@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeService {
@@ -20,7 +21,9 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
 
     @Override
     public OrganizationOfTrade save(OrganizationOfTrade organizationOfTrade) {
-        return null;
+        organizationOfTrade.setDateOfCreation(LocalDateTime.now());
+        organizationOfTrade.setDateOfModified(LocalDateTime.now());
+        return repository.save(organizationOfTrade);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
 
     @Override
     public OrganizationOfTrade edit(OrganizationOfTrade organizationOfTrade) {
-        return null;
+        organizationOfTrade.setDateOfModified(LocalDateTime.now());
+        return repository.save(organizationOfTrade);
     }
 
     @Override
     public OrganizationOfTrade delete(String id) {
+        OrganizationOfTrade organizationOfTrade = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return organizationOfTrade;
     }
 }

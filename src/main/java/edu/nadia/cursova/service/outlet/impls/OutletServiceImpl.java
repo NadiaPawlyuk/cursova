@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class OutletServiceImpl implements IOutletService {
@@ -20,7 +21,9 @@ public class OutletServiceImpl implements IOutletService {
 
     @Override
     public Outlet save(Outlet outlet) {
-        return null;
+        outlet.setDateOfCreation(LocalDateTime.now());
+        outlet.setDateOfModified(LocalDateTime.now());
+        return repository.save(outlet);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class OutletServiceImpl implements IOutletService {
 
     @Override
     public Outlet edit(Outlet outlet) {
-        return null;
+        outlet.setDateOfModified(LocalDateTime.now());
+        return repository.save(outlet);
     }
 
     @Override
     public Outlet delete(String id) {
+        Outlet outlet = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return outlet;
     }
 }

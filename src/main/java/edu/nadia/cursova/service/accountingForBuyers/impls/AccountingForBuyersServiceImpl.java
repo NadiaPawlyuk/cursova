@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,12 +22,14 @@ public class AccountingForBuyersServiceImpl implements IAccountingForBuyersServi
 
     @Override
     public AccountingForBuyers save(AccountingForBuyers accountingForBuyers) {
-        return null;
+        accountingForBuyers.setDateOfCreation(LocalDateTime.now());
+        accountingForBuyers.setDateOfModified(LocalDateTime.now());
+        return repository.save(accountingForBuyers);
     }
 
     @Override
     public AccountingForBuyers get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -36,13 +39,14 @@ public class AccountingForBuyersServiceImpl implements IAccountingForBuyersServi
 
     @Override
     public AccountingForBuyers edit(AccountingForBuyers accountingForBuyers) {
-        return null;
+        accountingForBuyers.setDateOfModified(LocalDateTime.now());
+        return repository.save(accountingForBuyers);
     }
 
     @Override
     public AccountingForBuyers delete(String id) {
-
+        AccountingForBuyers accountingForBuyers = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return accountingForBuyers;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService {
@@ -20,7 +21,9 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
 
     @Override
     public OrderToTheSupplier save(OrderToTheSupplier orderToTheSupplier) {
-        return null;
+        orderToTheSupplier.setDateOfCreation(LocalDateTime.now());
+        orderToTheSupplier.setDateOfModified(LocalDateTime.now());
+        return repository.save(orderToTheSupplier);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
 
     @Override
     public OrderToTheSupplier edit(OrderToTheSupplier orderToTheSupplier) {
-        return null;
+        orderToTheSupplier.setDateOfModified(LocalDateTime.now());
+        return repository.save(orderToTheSupplier);
     }
 
     @Override
     public OrderToTheSupplier delete(String id) {
+        OrderToTheSupplier orderToTheSupplier = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return orderToTheSupplier;
     }
 }

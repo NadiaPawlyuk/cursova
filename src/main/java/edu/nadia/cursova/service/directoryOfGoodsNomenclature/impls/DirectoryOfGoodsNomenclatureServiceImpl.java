@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGoodsNomenclatureService {
@@ -20,7 +21,9 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
 
     @Override
     public DirectoryOfGoodsNomenclature save(DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature) {
-        return null;
+        directoryOfGoodsNomenclature.setDateOfCreation(LocalDateTime.now());
+        directoryOfGoodsNomenclature.setDateOfModified(LocalDateTime.now());
+        return repository.save(directoryOfGoodsNomenclature);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
 
     @Override
     public DirectoryOfGoodsNomenclature edit(DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature) {
-        return null;
+        directoryOfGoodsNomenclature.setDateOfModified(LocalDateTime.now());
+        return repository.save(directoryOfGoodsNomenclature);
     }
 
     @Override
     public DirectoryOfGoodsNomenclature delete(String id) {
+        DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return directoryOfGoodsNomenclature;
     }
 }

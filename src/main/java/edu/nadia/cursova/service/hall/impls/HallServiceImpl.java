@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class HallServiceImpl implements IHallService {
@@ -20,7 +21,9 @@ public class HallServiceImpl implements IHallService {
 
     @Override
     public Hall save(Hall hall) {
-        return null;
+        hall.setDateOfCreation(LocalDateTime.now());
+        hall.setDateOfModified(LocalDateTime.now());
+        return repository.save(hall);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class HallServiceImpl implements IHallService {
 
     @Override
     public Hall edit(Hall hall) {
-        return null;
+        hall.setDateOfModified(LocalDateTime.now());
+        return repository.save(hall);
     }
 
     @Override
     public Hall delete(String id) {
+        Hall hall = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return hall;
     }
 }

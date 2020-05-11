@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class SupplierServiceImpl implements ISupplierService {
@@ -20,7 +21,9 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public Supplier save(Supplier supplier) {
-        return null;
+        supplier.setDateOfCreation(LocalDateTime.now());
+        supplier.setDateOfModified(LocalDateTime.now());
+        return repository.save(supplier);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public Supplier edit(Supplier supplier) {
-        return null;
+        supplier.setDateOfModified(LocalDateTime.now());
+        return repository.save(supplier);
     }
 
     @Override
     public Supplier delete(String id) {
+        Supplier supplier = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return supplier;
     }
 }

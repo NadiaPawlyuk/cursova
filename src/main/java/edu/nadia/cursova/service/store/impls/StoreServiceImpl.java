@@ -1,12 +1,14 @@
 package edu.nadia.cursova.service.store.impls;
 
 import edu.nadia.cursova.dao.repository.StoreRepository;
+import edu.nadia.cursova.model.Seller;
 import edu.nadia.cursova.model.Store;
 import edu.nadia.cursova.service.store.interfaces.IStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class StoreServiceImpl implements IStoreService {
@@ -20,7 +22,9 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public Store save(Store store) {
-        return null;
+        store.setDateOfCreation(LocalDateTime.now());
+        store.setDateOfModified(LocalDateTime.now());
+        return repository.save(store);
     }
 
     @Override
@@ -35,12 +39,14 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public Store edit(Store store) {
-        return null;
+        store.setDateOfModified(LocalDateTime.now());
+        return repository.save(store);
     }
 
     @Override
     public Store delete(String id) {
+        Store store = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return store;
     }
 }

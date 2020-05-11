@@ -15,18 +15,18 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/web/organization")
+@RequestMapping("/web/TheHeadOfTheSection")
 public class TheHeadOfTheSectionWEBController {
     @Autowired
     TheHeadOfTheSectionServiceImpl service;
-    @RequestMapping("/TheHeadOfTheSection")
+    @RequestMapping("/get/list")
     String getAll(Model model)
     {
         model.addAttribute("theHeadOfTheSection", service.getAll());
         return "theHeadOfTheSectionList";
     }
 
-    @RequestMapping("/TheHeadOfTheSection/delete/{id}")
+    @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
         service.delete(id);

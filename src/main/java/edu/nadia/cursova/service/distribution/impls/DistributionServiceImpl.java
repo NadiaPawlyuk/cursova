@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class DistributionServiceImpl implements IDistributionService {
@@ -20,7 +21,9 @@ public class DistributionServiceImpl implements IDistributionService {
 
     @Override
     public Distribution save(Distribution distribution) {
-        return null;
+        distribution.setDateOfCreation(LocalDateTime.now());
+        distribution.setDateOfModified(LocalDateTime.now());
+        return repository.save(distribution);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class DistributionServiceImpl implements IDistributionService {
 
     @Override
     public Distribution edit(Distribution distribution) {
-        return null;
+        distribution.setDateOfModified(LocalDateTime.now());
+        return repository.save(distribution);
     }
 
     @Override
     public Distribution delete(String id) {
+        Distribution distribution = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return distribution;
     }
 }

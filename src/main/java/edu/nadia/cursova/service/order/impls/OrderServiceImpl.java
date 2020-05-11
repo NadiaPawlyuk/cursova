@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class OrderServiceImpl implements IOrderService {
@@ -20,7 +21,9 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order save(Order order) {
-        return null;
+        order.setDateOfCreation(LocalDateTime.now());
+        order.setDateOfModified(LocalDateTime.now());
+        return repository.save(order);
     }
 
     @Override
@@ -35,12 +38,14 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order edit(Order order) {
-        return null;
+        order.setDateOfModified(LocalDateTime.now());
+        return repository.save(order);
     }
 
     @Override
     public Order delete(String id) {
+        Order order = repository.findById(id).orElse(null);
         repository.deleteById(id);
-        return repository.findById(id).orElse(null);
+        return order;
     }
 }
