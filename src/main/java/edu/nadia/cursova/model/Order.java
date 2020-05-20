@@ -9,10 +9,10 @@ public class Order {
     //Замовлення
     @Id
     private String id;
-    private String externalCommunicationWithNomenclature;
+    private DirectoryOfGoodsNomenclature externalCommunicationWithNomenclature;
     private String numberOfGoods;
-    private String externalCommunicationWithSupplier;
-    private String externalCommunicationWithManagers;
+    private Supplier externalCommunicationWithSupplier;
+    private Manager externalCommunicationWithManagers;
     private String price;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
@@ -21,7 +21,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String id, String externalCommunicationWithNomenclature, String numberOfGoods, String externalCommunicationWithSupplier, String externalCommunicationWithManagers, String price, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Order(String id, DirectoryOfGoodsNomenclature externalCommunicationWithNomenclature, String numberOfGoods, Supplier externalCommunicationWithSupplier, Manager externalCommunicationWithManagers, String price, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.externalCommunicationWithNomenclature = externalCommunicationWithNomenclature;
         this.numberOfGoods = numberOfGoods;
@@ -41,14 +41,6 @@ public class Order {
         this.id = id;
     }
 
-    public String getExternalCommunicationWithNomenclature() {
-        return externalCommunicationWithNomenclature;
-    }
-
-    public void setExternalCommunicationWithNomenclature(String externalCommunicationWithNomenclature) {
-        this.externalCommunicationWithNomenclature = externalCommunicationWithNomenclature;
-    }
-
     public String getNumberOfGoods() {
         return numberOfGoods;
     }
@@ -57,19 +49,27 @@ public class Order {
         this.numberOfGoods = numberOfGoods;
     }
 
-    public String getExternalCommunicationWithSupplier() {
+    public DirectoryOfGoodsNomenclature getExternalCommunicationWithNomenclature() {
+        return externalCommunicationWithNomenclature;
+    }
+
+    public void setExternalCommunicationWithNomenclature(DirectoryOfGoodsNomenclature externalCommunicationWithNomenclature) {
+        this.externalCommunicationWithNomenclature = externalCommunicationWithNomenclature;
+    }
+
+    public Supplier getExternalCommunicationWithSupplier() {
         return externalCommunicationWithSupplier;
     }
 
-    public void setExternalCommunicationWithSupplier(String externalCommunicationWithSupplier) {
+    public void setExternalCommunicationWithSupplier(Supplier externalCommunicationWithSupplier) {
         this.externalCommunicationWithSupplier = externalCommunicationWithSupplier;
     }
 
-    public String getExternalCommunicationWithManagers() {
+    public Manager getExternalCommunicationWithManagers() {
         return externalCommunicationWithManagers;
     }
 
-    public void setExternalCommunicationWithManagers(String externalCommunicationWithManagers) {
+    public void setExternalCommunicationWithManagers(Manager externalCommunicationWithManagers) {
         this.externalCommunicationWithManagers = externalCommunicationWithManagers;
     }
 

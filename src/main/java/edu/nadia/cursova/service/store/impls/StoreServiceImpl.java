@@ -29,7 +29,7 @@ public class StoreServiceImpl implements IStoreService {
 
     @Override
     public Store get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

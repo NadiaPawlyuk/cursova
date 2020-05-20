@@ -39,11 +39,12 @@
                 <td>${store.dateOfCreation}</td>
                 <td>${store.dateOfModified}</td>
                 <td>${store.description}</td>
-                <td><a href="/web/organization/Store/delete/${store.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Store/delete/${store.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Store/edit/${store.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Store/create"><button>Create</button></a>
 </div>
 
 </body>

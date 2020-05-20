@@ -14,7 +14,7 @@
             <th>externalCommunicationWithTheNomenclature</th>
             <th>price</th>
             <th>Number Of Goods</th>
-            <th>externalCommunicationWithTheSupplier</th>
+            <th>Outlet</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
             <th>Description</th>
@@ -27,15 +27,16 @@
                 <td>${productsInOutlets.externalCommunicationWithTheNomenclature}</td>
                 <td>${productsInOutlets.price}</td>
                 <td>${productsInOutlets.numberOfGoods}</td>
-                <td>${productsInOutlets.externalCommunicationWithTheSupplier}</td>
+                <td>${productsInOutlets.outlet}</td>
                 <td>${productsInOutlets.dateOfCreation}</td>
                 <td>${productsInOutlets.dateOfModified}</td>
                 <td>${productsInOutlets.description}</td>
-                <td><a href="/web/organization/ProductsInOutlets/delete/${productsInOutlets.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/ProductsInOutlets/delete/${productsInOutlets.id}"><button>Delete</button></a></td>
+                <td><a href="/web/ProductsInOutlets/edit/${productsInOutlets.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/ProductsInOutlets/create"><button>Create</button></a>
 </div>
 
 </body>

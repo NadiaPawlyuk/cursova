@@ -9,10 +9,10 @@ public class ProductsFromSuppliers {
     //Товари у постачальників
     @Id
     private String id;
-    private String externalCommunicationWithTheNomenclature;
+    private DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature;
     private String price;
     private String numberOfGoods;
-    private String externalCommunicationWithTheSupplier;
+    private Supplier externalCommunicationWithTheSupplier;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,7 +20,7 @@ public class ProductsFromSuppliers {
     public ProductsFromSuppliers() {
     }
 
-    public ProductsFromSuppliers(String id, String externalCommunicationWithTheNomenclature, String price, String numberOfGoods, String externalCommunicationWithTheSupplier, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public ProductsFromSuppliers(String id, DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature, String price, String numberOfGoods, Supplier externalCommunicationWithTheSupplier, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
         this.price = price;
@@ -39,11 +39,11 @@ public class ProductsFromSuppliers {
         this.id = id;
     }
 
-    public String getExternalCommunicationWithTheNomenclature() {
+    public DirectoryOfGoodsNomenclature getExternalCommunicationWithTheNomenclature() {
         return externalCommunicationWithTheNomenclature;
     }
 
-    public void setExternalCommunicationWithTheNomenclature(String externalCommunicationWithTheNomenclature) {
+    public void setExternalCommunicationWithTheNomenclature(DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature) {
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
     }
 
@@ -63,11 +63,11 @@ public class ProductsFromSuppliers {
         this.numberOfGoods = numberOfGoods;
     }
 
-    public String getExternalCommunicationWithTheSupplier() {
+    public Supplier getExternalCommunicationWithTheSupplier() {
         return externalCommunicationWithTheSupplier;
     }
 
-    public void setExternalCommunicationWithTheSupplier(String externalCommunicationWithTheSupplier) {
+    public void setExternalCommunicationWithTheSupplier(Supplier externalCommunicationWithTheSupplier) {
         this.externalCommunicationWithTheSupplier = externalCommunicationWithTheSupplier;
     }
 

@@ -31,11 +31,12 @@
                 <td>${productsFromSupplier.dateOfCreation}</td>
                 <td>${productsFromSupplier.dateOfModified}</td>
                 <td>${productsFromSupplier.description}</td>
-                <td><a href="/web/organization/ProductsFromSuppliers/delete/${productsFromSupplier.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/ProductsFromSuppliers/delete/${productsFromSupplier.id}"><button>Delete</button></a></td>
+                <td><a href="/web/ProductsFromSuppliers/edit/${productsFromSupplier.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/ProductsFromSuppliers/create"><button>Create</button></a>
 </div>
 
 </body>

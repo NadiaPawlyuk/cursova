@@ -6,13 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 @Document
 public class AccountingForGoodsSold {
-    //Ооблік проданих товарів
+    //Облік проданих товарів
     @Id
     private String id;
     private String offtake;
-    private String externalCommunicationWithTheDirectoryOfNomenclatureGoods;
-    private String externalCommunicationWithTheSeller;
-    private String externalCommunicationWithCustomerAccounting;
+    private DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods;
+    private Seller externalCommunicationWithTheSeller;
+    private AccountingForBuyers externalCommunicationWithCustomerAccounting;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,8 +20,7 @@ public class AccountingForGoodsSold {
     public AccountingForGoodsSold() {
     }
 
-
-    public AccountingForGoodsSold(String id, String offtake, String externalCommunicationWithTheDirectoryOfNomenclatureGoods, String externalCommunicationWithTheSeller, String externalCommunicationWithCustomerAccounting, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public AccountingForGoodsSold(String id, String offtake, DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods, Seller externalCommunicationWithTheSeller, AccountingForBuyers externalCommunicationWithCustomerAccounting, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.offtake = offtake;
         this.externalCommunicationWithTheDirectoryOfNomenclatureGoods = externalCommunicationWithTheDirectoryOfNomenclatureGoods;
@@ -40,27 +39,27 @@ public class AccountingForGoodsSold {
         this.offtake = offtake;
     }
 
-    public String getExternalCommunicationWithTheDirectoryOfNomenclatureGoods() {
+    public DirectoryOfGoodsNomenclature getExternalCommunicationWithTheDirectoryOfNomenclatureGoods() {
         return externalCommunicationWithTheDirectoryOfNomenclatureGoods;
     }
 
-    public void setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(String externalCommunicationWithTheDirectoryOfNomenclatureGoods) {
+    public void setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods) {
         this.externalCommunicationWithTheDirectoryOfNomenclatureGoods = externalCommunicationWithTheDirectoryOfNomenclatureGoods;
     }
 
-    public String getExternalCommunicationWithTheSeller() {
+    public Seller getExternalCommunicationWithTheSeller() {
         return externalCommunicationWithTheSeller;
     }
 
-    public void setExternalCommunicationWithTheSeller(String externalCommunicationWithTheSeller) {
+    public void setExternalCommunicationWithTheSeller(Seller externalCommunicationWithTheSeller) {
         this.externalCommunicationWithTheSeller = externalCommunicationWithTheSeller;
     }
 
-    public String getExternalCommunicationWithCustomerAccounting() {
+    public AccountingForBuyers getExternalCommunicationWithCustomerAccounting() {
         return externalCommunicationWithCustomerAccounting;
     }
 
-    public void setExternalCommunicationWithCustomerAccounting(String externalCommunicationWithCustomerAccounting) {
+    public void setExternalCommunicationWithCustomerAccounting(AccountingForBuyers externalCommunicationWithCustomerAccounting) {
         this.externalCommunicationWithCustomerAccounting = externalCommunicationWithCustomerAccounting;
     }
 

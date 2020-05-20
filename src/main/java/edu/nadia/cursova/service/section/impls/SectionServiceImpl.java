@@ -28,7 +28,7 @@ public class SectionServiceImpl implements ISectionService {
 
     @Override
     public Section get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

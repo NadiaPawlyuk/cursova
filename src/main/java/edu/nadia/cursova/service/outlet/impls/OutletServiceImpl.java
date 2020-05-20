@@ -28,7 +28,7 @@ public class OutletServiceImpl implements IOutletService {
 
     @Override
     public Outlet get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

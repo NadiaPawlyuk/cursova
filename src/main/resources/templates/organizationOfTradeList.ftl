@@ -31,11 +31,12 @@
                 <td>${organizationOfTrade.dateOfCreation}</td>
                 <td>${organizationOfTrade.dateOfModified}</td>
                 <td>${organizationOfTrade.description}</td>
-                <td><a href="/web/organization/OrganizationOfTrade/delete/${organizationOfTrade.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/OrganizationOfTrade/delete/${organizationOfTrade.id}"><button>Delete</button></a></td>
+                <td><a href="/web/OrganizationOfTrade/edit/${organizationOfTrade.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/OrganizationOfTrade/create"><button>Create</button></a>
 </div>
 
 </body>

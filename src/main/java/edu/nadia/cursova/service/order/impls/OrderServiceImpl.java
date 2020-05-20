@@ -28,7 +28,7 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

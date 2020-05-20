@@ -28,7 +28,7 @@ public class ProductsFromSuppliersServiceImpl implements IProductsFromSuppliersS
 
     @Override
     public ProductsFromSuppliers get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

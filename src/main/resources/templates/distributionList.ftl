@@ -31,11 +31,13 @@
                 <td>${distribution.dateOfCreation}</td>
                 <td>${distribution.dateOfModified}</td>
                 <td>${distribution.description}</td>
-                <td><a href="/web/organization/DistributionController/delete/${distribution.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Distribution/delete/${distribution.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Distribution/edit/${distribution.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Distribution/create"><button>Create</button></a>
+
 </div>
 
 </body>

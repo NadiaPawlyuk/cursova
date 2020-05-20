@@ -25,11 +25,13 @@
                 <td>${directoryOfGoodsNomenclature.dateOfCreation}</td>
                 <td>${directoryOfGoodsNomenclature.dateOfModified}</td>
                 <td>${directoryOfGoodsNomenclature.description}</td>
-                <td><a href="/web/organization/DirectoryOfGoodsNomenclatureController/delete/${directoryOfGoodsNomenclature.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/DirectoryOfGoodsNomenclature/delete/${directoryOfGoodsNomenclature.id}"><button>Delete</button></a></td>
+                <td><a href="/web/DirectoryOfGoodsNomenclature/edit/${directoryOfGoodsNomenclature.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/DirectoryOfGoodsNomenclature/create"><button>Create</button></a>
+
 </div>
 
 </body>

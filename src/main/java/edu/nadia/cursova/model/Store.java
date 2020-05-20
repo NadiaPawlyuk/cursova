@@ -9,13 +9,13 @@ public class Store {
     //Магазин
     @Id
     private String id;
-    private String nameOfTheStore;
+    private Outlet nameOfTheStore;
     private String numberOfSellers;
     private String numberOfHalls;
     private String numberOfCounters;
     private String address;
     private String theSizeOfTheOutlet;
-    private String  rent;
+    private String rent;
     private String utilities;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
@@ -24,7 +24,7 @@ public class Store {
     public Store() {
     }
 
-    public Store(String id, String nameOfTheStore, String numberOfSellers, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Store(String id, Outlet nameOfTheStore, String numberOfSellers, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.nameOfTheStore = nameOfTheStore;
         this.numberOfSellers = numberOfSellers;
@@ -47,11 +47,11 @@ public class Store {
         this.id = id;
     }
 
-    public String getNameOfTheStore() {
+    public Outlet getNameOfTheStore() {
         return nameOfTheStore;
     }
 
-    public void setNameOfTheStore(String nameOfTheStore) {
+    public void setNameOfTheStore(Outlet nameOfTheStore) {
         this.nameOfTheStore = nameOfTheStore;
     }
 

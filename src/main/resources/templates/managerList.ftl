@@ -37,11 +37,12 @@
                 <td>${manager.dateOfCreation}</td>
                 <td>${manager.dateOfModified}</td>
                 <td>${manager.description}</td>
-                <td><a href="/web/organization/Manager/delete/${manager.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Manager/delete/${manager.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Manager/edit/${manager.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Manager/create"><button>Create</button></a>
 </div>
 
 </body>

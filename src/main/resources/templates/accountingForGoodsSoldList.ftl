@@ -31,11 +31,13 @@
                 <td>${accountingForGoodsSold.dateOfCreation}</td>
                 <td>${accountingForGoodsSold.dateOfModified}</td>
                 <td>${accountingForGoodsSold.description}</td>
-                <td><a href="/web/organization/AccountingForGoodsSoldController/delete/${accountingForGoodsSold.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/AccountingForGoodsSold/delete/${accountingForGoodsSold.id}"><button>Delete</button></a></td>
+                <td><a href="/web/AccountingForGoodsSold/edit/${accountingForGoodsSold.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/AccountingForGoodsSold/create"><button>Create</button></a>
+
 </div>
 
 </body>

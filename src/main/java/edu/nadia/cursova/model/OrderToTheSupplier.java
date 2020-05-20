@@ -11,7 +11,7 @@ public class OrderToTheSupplier {
     private String id;
     private String theNameOfTheProduct;
     private String numberOfGoods;
-    private String externalCommunicationWithNomenclature;
+    private Outlet externalCommunicationWithNomenclature;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -19,7 +19,7 @@ public class OrderToTheSupplier {
     public OrderToTheSupplier() {
     }
 
-    public OrderToTheSupplier(String id, String theNameOfTheProduct, String numberOfGoods, String externalCommunicationWithNomenclature, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public OrderToTheSupplier(String id, String theNameOfTheProduct, String numberOfGoods, Outlet externalCommunicationWithNomenclature, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.theNameOfTheProduct = theNameOfTheProduct;
         this.numberOfGoods = numberOfGoods;
@@ -27,6 +27,14 @@ public class OrderToTheSupplier {
         this.dateOfCreation = dateOfCreation;
         this.dateOfModified = dateOfModified;
         this.description = description;
+    }
+
+    public Outlet getExternalCommunicationWithNomenclature() {
+        return externalCommunicationWithNomenclature;
+    }
+
+    public void setExternalCommunicationWithNomenclature(Outlet externalCommunicationWithNomenclature) {
+        this.externalCommunicationWithNomenclature = externalCommunicationWithNomenclature;
     }
 
     public String getId() {
@@ -51,14 +59,6 @@ public class OrderToTheSupplier {
 
     public void setNumberOfGoods(String numberOfGoods) {
         this.numberOfGoods = numberOfGoods;
-    }
-
-    public String getExternalCommunicationWithNomenclature() {
-        return externalCommunicationWithNomenclature;
-    }
-
-    public void setExternalCommunicationWithNomenclature(String externalCommunicationWithNomenclature) {
-        this.externalCommunicationWithNomenclature = externalCommunicationWithNomenclature;
     }
 
     public LocalDateTime getDateOfCreation() {

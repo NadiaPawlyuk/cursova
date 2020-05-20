@@ -16,15 +16,16 @@ public class Manager {
     private String numberOfPhone;
     private String address;
     private String salary;
-    private String externalCommunicationWithThePlaceOfWork;
+    private OrganizationOfTrade externalCommunicationWithThePlaceOfWork;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
 
+
     public Manager() {
     }
 
-    public Manager(String id, String initials, String dateOfBirthday, String dateOfHiring, String numberOfPhone, String address, String salary, String externalCommunicationWithThePlaceOfWork, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Manager(String id, String initials, String dateOfBirthday, String dateOfHiring, String numberOfPhone, String address, String salary, OrganizationOfTrade externalCommunicationWithThePlaceOfWork, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.initials = initials;
         this.dateOfBirthday = dateOfBirthday;
@@ -94,11 +95,11 @@ public class Manager {
         this.salary = salary;
     }
 
-    public String getExternalCommunicationWithThePlaceOfWork() {
+    public OrganizationOfTrade getExternalCommunicationWithThePlaceOfWork() {
         return externalCommunicationWithThePlaceOfWork;
     }
 
-    public void setExternalCommunicationWithThePlaceOfWork(String externalCommunicationWithThePlaceOfWork) {
+    public void setExternalCommunicationWithThePlaceOfWork(OrganizationOfTrade externalCommunicationWithThePlaceOfWork) {
         this.externalCommunicationWithThePlaceOfWork = externalCommunicationWithThePlaceOfWork;
     }
 

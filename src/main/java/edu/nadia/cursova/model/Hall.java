@@ -11,7 +11,7 @@ public class Hall {
     private String id;
     private String nameOfTheHall;
     private String numberOfSellers;
-    private String externalCommunicationWithDepartmentStore;
+    private Outlet externalCommunicationWithDepartmentStore;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -19,7 +19,7 @@ public class Hall {
     public Hall() {
     }
 
-    public Hall(String id, String nameOfTheHall, String numberOfSellers, String externalCommunicationWithDepartmentStore, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Hall(String id, String nameOfTheHall, String numberOfSellers, Outlet externalCommunicationWithDepartmentStore, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.nameOfTheHall = nameOfTheHall;
         this.numberOfSellers = numberOfSellers;
@@ -53,11 +53,11 @@ public class Hall {
         this.numberOfSellers = numberOfSellers;
     }
 
-    public String getExternalCommunicationWithDepartmentStore() {
+    public Outlet getExternalCommunicationWithDepartmentStore() {
         return externalCommunicationWithDepartmentStore;
     }
 
-    public void setExternalCommunicationWithDepartmentStore(String externalCommunicationWithDepartmentStore) {
+    public void setExternalCommunicationWithDepartmentStore(Outlet externalCommunicationWithDepartmentStore) {
         this.externalCommunicationWithDepartmentStore = externalCommunicationWithDepartmentStore;
     }
 

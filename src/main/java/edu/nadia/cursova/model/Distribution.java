@@ -9,10 +9,10 @@ public class Distribution {
     //Розподіл
     @Id
     private String id;
-    private String externalCommunicationWithTheNomenclature;
+    private DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature;
     private String numberOfGoods;
     private String price;
-    private String externalCommunicationWithTheOutlet;
+    private Outlet externalCommunicationWithTheOutlet;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,7 +20,7 @@ public class Distribution {
     public Distribution() {
     }
 
-    public Distribution(String id, String externalCommunicationWithTheNomenclature, String numberOfGoods, String price, String externalCommunicationWithTheOutlet, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Distribution(String id, DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature, String numberOfGoods, String price, Outlet externalCommunicationWithTheOutlet, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
         this.numberOfGoods = numberOfGoods;
@@ -39,12 +39,20 @@ public class Distribution {
         this.id = id;
     }
 
-    public String getExternalCommunicationWithTheNomenclature() {
+    public DirectoryOfGoodsNomenclature getExternalCommunicationWithTheNomenclature() {
         return externalCommunicationWithTheNomenclature;
     }
 
-    public void setExternalCommunicationWithTheNomenclature(String externalCommunicationWithTheNomenclature) {
+    public void setExternalCommunicationWithTheNomenclature(DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature) {
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
+    }
+
+    public Outlet getExternalCommunicationWithTheOutlet() {
+        return externalCommunicationWithTheOutlet;
+    }
+
+    public void setExternalCommunicationWithTheOutlet(Outlet externalCommunicationWithTheOutlet) {
+        this.externalCommunicationWithTheOutlet = externalCommunicationWithTheOutlet;
     }
 
     public String getNumberOfGoods() {
@@ -61,14 +69,6 @@ public class Distribution {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getExternalCommunicationWithTheOutlet() {
-        return externalCommunicationWithTheOutlet;
-    }
-
-    public void setExternalCommunicationWithTheOutlet(String externalCommunicationWithTheOutlet) {
-        this.externalCommunicationWithTheOutlet = externalCommunicationWithTheOutlet;
     }
 
     public LocalDateTime getDateOfCreation() {

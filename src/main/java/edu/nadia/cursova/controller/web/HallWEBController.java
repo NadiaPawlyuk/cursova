@@ -1,24 +1,31 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.model.Hall;
+import edu.nadia.cursova.form.AccountingForBuyersForm;
+import edu.nadia.cursova.form.DistributionForm;
+import edu.nadia.cursova.form.HallForm;
+import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.hall.impls.HallServiceImpl;
+import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/web/Hall")
 public class HallWEBController {
     @Autowired
     HallServiceImpl service;
+
+    @Autowired
+    OutletServiceImpl outletService;
 
     @RequestMapping("/get/list")
     String getAll(Model model)
@@ -33,5 +40,59 @@ public class HallWEBController {
         service.delete(id);
         model.addAttribute("halls", service.getAll());
         return "hallList";
+    }
+
+    @RequestMapping(value = "/create",  method = RequestMethod.GET)
+    String create(Model model)
+    {
+        HallForm hallForm = new HallForm();
+        Map<String, String> mavs = outletService.getAll().stream()
+                .collect(Collectors.toMap(Outlet::getId, Outlet::getName));
+        model.addAttribute("mavs", mavs);
+        model.addAttribute("hallForm", hallForm);
+        return "hallAdd";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    String create(Model model, @ModelAttribute("hallForm") HallForm hallForm){
+        Hall hall = new Hall();
+        Outlet outlet = outletService.get(hallForm.getExternalCommunicationWithDepartmentStore());
+        hall.setNameOfTheHall(hallForm.getNameOfTheHall());
+        hall.setNumberOfSellers(hallForm.getNumberOfSellers());
+        hall.setExternalCommunicationWithDepartmentStore(outlet);
+        hall.setDescription(hallForm.getDescription());
+        service.save(hall);
+        model.addAttribute("halls", service.getAll());
+        return "hallList";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    String edit(Model model,
+                @PathVariable("id") String id){
+        Hall hall = service.get(id);
+        Map<String, String> mavs = outletService.getAll().stream()
+                .collect(Collectors.toMap(Outlet::getId, Outlet::getName));
+        HallForm hallForm = new HallForm();
+        hallForm.setNameOfTheHall(hall.getNameOfTheHall());
+        hallForm.setNumberOfSellers(hall.getNumberOfSellers());
+        hallForm.setExternalCommunicationWithDepartmentStore(hall.getExternalCommunicationWithDepartmentStore().getName());
+        hallForm.setDescription(hall.getDescription());
+        model.addAttribute("mavs", mavs);
+        model.addAttribute("hallForm", hallForm);
+        return "hallAdd";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("hallForm") HallForm hallForm){
+        Hall hall = new Hall();
+        Outlet outlet = outletService.get(hallForm.getExternalCommunicationWithDepartmentStore());
+        hall.setId(id);
+        hall.setNameOfTheHall(hallForm.getNameOfTheHall());
+        hall.setNumberOfSellers(hallForm.getNumberOfSellers());
+        hall.setExternalCommunicationWithDepartmentStore(outlet);
+        hall.setDescription(hallForm.getDescription());
+        service.save(hall);
+        model.addAttribute("hall", service.getAll());
+        return "redirect:/web/Hall/get/list";
     }
 }

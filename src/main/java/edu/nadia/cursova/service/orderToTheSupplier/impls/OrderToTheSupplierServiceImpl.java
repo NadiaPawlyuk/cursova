@@ -1,7 +1,9 @@
 package edu.nadia.cursova.service.orderToTheSupplier.impls;
 
 import edu.nadia.cursova.dao.repository.OrderToTheSupplierRepository;
+import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
 import edu.nadia.cursova.model.OrderToTheSupplier;
+import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import edu.nadia.cursova.service.orderToTheSupplier.interfaces.IOrderToTheSupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.List;
 public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService {
     @Autowired
     OrderToTheSupplierRepository repository;
+
+    //@Autowired
+    //DirectoryOfGoodsNomenclatureServiceImpl directoryOfGoodsNomenclatureService;
 
     @PostConstruct
     void init(){
@@ -28,7 +33,7 @@ public class OrderToTheSupplierServiceImpl implements IOrderToTheSupplierService
 
     @Override
     public OrderToTheSupplier get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

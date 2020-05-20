@@ -28,7 +28,7 @@ public class HallServiceImpl implements IHallService {
 
     @Override
     public Hall get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

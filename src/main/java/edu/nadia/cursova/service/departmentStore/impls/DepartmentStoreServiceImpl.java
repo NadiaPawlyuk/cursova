@@ -30,7 +30,7 @@ public class DepartmentStoreServiceImpl implements IDepartmentStoreService {
 
     @Override
     public DepartmentStore get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

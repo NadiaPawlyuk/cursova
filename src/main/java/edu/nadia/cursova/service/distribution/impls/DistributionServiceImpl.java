@@ -28,7 +28,7 @@ public class DistributionServiceImpl implements IDistributionService {
 
     @Override
     public Distribution get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

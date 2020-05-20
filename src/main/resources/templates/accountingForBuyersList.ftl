@@ -30,11 +30,13 @@
                 <td>${accountingForBuyer.dateOfCreation}</td>
                 <td>${accountingForBuyer.dateOfModified}</td>
                 <td>${accountingForBuyer.description}</td>
-                <td><a href="/web/organization/AccountingForBuyersController/delete/${accountingForBuyer.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/AccountingForBuyers/delete/${accountingForBuyer.id}"><button>Delete</button></a></td>
+                <td><a href="/web/AccountingForBuyers/edit/${accountingForBuyer.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/AccountingForBuyers/create"><button>Create</button></a>
+
 </div>
 
 </body>

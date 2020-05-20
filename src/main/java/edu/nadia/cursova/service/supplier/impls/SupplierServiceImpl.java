@@ -28,7 +28,7 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public Supplier get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

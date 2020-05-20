@@ -28,7 +28,7 @@ public class OrganizationOfTradeServiceImpl implements IOrganizationOfTradeServi
 
     @Override
     public OrganizationOfTrade get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

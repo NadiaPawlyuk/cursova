@@ -28,7 +28,7 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     @Override
     public ProductsInOutlets get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

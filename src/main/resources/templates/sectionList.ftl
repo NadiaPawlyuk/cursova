@@ -31,11 +31,12 @@
                 <td>${section.dateOfCreation}</td>
                 <td>${section.dateOfModified}</td>
                 <td>${section.description}</td>
-                <td><a href="/web/organization/Section/delete/${section.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Section/delete/${section.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Section/edit/${section.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Section/create"><button>Create</button></a>
 </div>
 
 </body>

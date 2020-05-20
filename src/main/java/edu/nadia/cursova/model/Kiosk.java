@@ -9,7 +9,7 @@ public class Kiosk {
     //Кіоск
     @Id
     private String id;
-    private String nameOfTheKiosk;
+    private Outlet nameOfTheKiosk;
     private String numberOfSellers;
     private String numberOfCounters;
     private String address;
@@ -23,7 +23,7 @@ public class Kiosk {
     public Kiosk() {
     }
 
-    public Kiosk(String id, String nameOfTheKiosk, String numberOfSellers, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Kiosk(String id, Outlet nameOfTheKiosk, String numberOfSellers, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.nameOfTheKiosk = nameOfTheKiosk;
         this.numberOfSellers = numberOfSellers;
@@ -45,11 +45,11 @@ public class Kiosk {
         this.id = id;
     }
 
-    public String getNameOfTheKiosk() {
+    public Outlet getNameOfTheKiosk() {
         return nameOfTheKiosk;
     }
 
-    public void setNameOfTheKiosk(String nameOfTheKiosk) {
+    public void setNameOfTheKiosk(Outlet nameOfTheKiosk) {
         this.nameOfTheKiosk = nameOfTheKiosk;
     }
 

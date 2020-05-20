@@ -9,10 +9,8 @@ public class Outlet {
     //Торговельна точка
     @Id
     private String id;
-    private String externalCommunicationWithTheDepartmentStore;
-    private String externalCommunicationWithTheStore;
-    private String externalCommunicationWithTheKiosk;
-    private String numberOfManagers;
+    private String name;
+    private String kindOfOutlet;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,12 +18,10 @@ public class Outlet {
     public Outlet() {
     }
 
-    public Outlet(String id, String externalCommunicationWithTheDepartmentStore, String externalCommunicationWithTheStore, String externalCommunicationWithTheKiosk, String numberOfManagers, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Outlet(String id, String name, String kindOfOutlet, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
-        this.externalCommunicationWithTheDepartmentStore = externalCommunicationWithTheDepartmentStore;
-        this.externalCommunicationWithTheStore = externalCommunicationWithTheStore;
-        this.externalCommunicationWithTheKiosk = externalCommunicationWithTheKiosk;
-        this.numberOfManagers = numberOfManagers;
+        this.name = name;
+        this.kindOfOutlet = kindOfOutlet;
         this.dateOfCreation = dateOfCreation;
         this.dateOfModified = dateOfModified;
         this.description = description;
@@ -39,36 +35,20 @@ public class Outlet {
         this.id = id;
     }
 
-    public String getExternalCommunicationWithTheDepartmentStore() {
-        return externalCommunicationWithTheDepartmentStore;
+    public String getName() {
+        return name;
     }
 
-    public void setExternalCommunicationWithTheDepartmentStore(String externalCommunicationWithTheDepartmentStore) {
-        this.externalCommunicationWithTheDepartmentStore = externalCommunicationWithTheDepartmentStore;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getExternalCommunicationWithTheStore() {
-        return externalCommunicationWithTheStore;
+    public String getKindOfOutlet() {
+        return kindOfOutlet;
     }
 
-    public void setExternalCommunicationWithTheStore(String externalCommunicationWithTheStore) {
-        this.externalCommunicationWithTheStore = externalCommunicationWithTheStore;
-    }
-
-    public String getExternalCommunicationWithTheKiosk() {
-        return externalCommunicationWithTheKiosk;
-    }
-
-    public void setExternalCommunicationWithTheKiosk(String externalCommunicationWithTheKiosk) {
-        this.externalCommunicationWithTheKiosk = externalCommunicationWithTheKiosk;
-    }
-
-    public String getNumberOfManagers() {
-        return numberOfManagers;
-    }
-
-    public void setNumberOfManagers(String numberOfManagers) {
-        this.numberOfManagers = numberOfManagers;
+    public void setKindOfOutlet(String kindOfOutlet) {
+        this.kindOfOutlet = kindOfOutlet;
     }
 
     public LocalDateTime getDateOfCreation() {
@@ -98,13 +78,11 @@ public class Outlet {
     @Override
     public String toString() {
         return "Outlet{" +
-                "id=" + id +
-                ", externalCommunicationWithTheDepartmentStore='" + externalCommunicationWithTheDepartmentStore + '\'' +
-                ", externalCommunicationWithTheStore='" + externalCommunicationWithTheStore + '\'' +
-                ", externalCommunicationWithTheKiosk='" + externalCommunicationWithTheKiosk + '\'' +
-                ", numberOfManagers='" + numberOfManagers + '\'' +
-                ", dateOfCreation='" + dateOfCreation + '\'' +
-                ", dateOfModified='" + dateOfModified + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", kindOfOutlet='" + kindOfOutlet + '\'' +
+                ", dateOfCreation=" + dateOfCreation +
+                ", dateOfModified=" + dateOfModified +
                 ", description='" + description + '\'' +
                 '}';
     }

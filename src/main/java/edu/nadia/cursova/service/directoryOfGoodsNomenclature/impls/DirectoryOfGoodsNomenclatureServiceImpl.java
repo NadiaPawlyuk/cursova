@@ -28,7 +28,7 @@ public class DirectoryOfGoodsNomenclatureServiceImpl implements IDirectoryOfGood
 
     @Override
     public DirectoryOfGoodsNomenclature get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

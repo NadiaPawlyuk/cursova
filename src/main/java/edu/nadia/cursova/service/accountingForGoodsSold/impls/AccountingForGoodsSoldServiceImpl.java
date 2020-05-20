@@ -28,7 +28,7 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
 
     @Override
     public AccountingForGoodsSold get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

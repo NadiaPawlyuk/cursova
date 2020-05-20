@@ -15,7 +15,7 @@ public class Seller {
     private String numberOfPhone;
     private String address;
     private String salary;
-    private String externalCommunicationWithThePlaceOfWork;
+    private Outlet externalCommunicationWithThePlaceOfWork;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -23,7 +23,7 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(String id, String initials, String dateOfBirthday, String dateOfHiring, String numberOfPhone, String address, String salary, String externalCommunicationWithThePlaceOfWork, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Seller(String id, String initials, String dateOfBirthday, String dateOfHiring, String numberOfPhone, String address, String salary, Outlet externalCommunicationWithThePlaceOfWork, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.initials = initials;
         this.dateOfBirthday = dateOfBirthday;
@@ -93,11 +93,11 @@ public class Seller {
         this.salary = salary;
     }
 
-    public String getExternalCommunicationWithThePlaceOfWork() {
+    public Outlet getExternalCommunicationWithThePlaceOfWork() {
         return externalCommunicationWithThePlaceOfWork;
     }
 
-    public void setExternalCommunicationWithThePlaceOfWork(String externalCommunicationWithThePlaceOfWork) {
+    public void setExternalCommunicationWithThePlaceOfWork(Outlet externalCommunicationWithThePlaceOfWork) {
         this.externalCommunicationWithThePlaceOfWork = externalCommunicationWithThePlaceOfWork;
     }
 

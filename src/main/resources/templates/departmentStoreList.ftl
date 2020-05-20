@@ -41,11 +41,13 @@
                 <td>${departmentStore.dateOfCreation}</td>
                 <td>${departmentStore.dateOfModified}</td>
                 <td>${departmentStore.description}</td>
-                <td><a href="/web/organization/DepartmentStoreController/delete/${departmentStore.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/DepartmentStore/delete/${departmentStore.id}"><button>Delete</button></a></td>
+                <td><a href="/web/DepartmentStore/edit/${departmentStore.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/DepartmentStore/create"><button>Create</button></a>
+
 </div>
 
 </body>

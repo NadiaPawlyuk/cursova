@@ -29,11 +29,12 @@
                 <td>${orderToTheSupplier.dateOfCreation}</td>
                 <td>${orderToTheSupplier.dateOfModified}</td>
                 <td>${orderToTheSupplier.description}</td>
-                <td><a href="/web/organization/OrderToTheSupplier/delete/${orderToTheSupplier.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/OrderToTheSupplier/delete/${orderToTheSupplier.id}"><button>Delete</button></a></td>
+                <td><a href="/web/OrderToTheSupplier/edit/${orderToTheSupplier.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/OrderToTheSupplier/create"><button>Create</button></a>
 </div>
 
 </body>

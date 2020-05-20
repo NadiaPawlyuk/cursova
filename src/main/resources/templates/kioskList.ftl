@@ -37,11 +37,12 @@
                 <td>${kiosk.dateOfCreation}</td>
                 <td>${kiosk.dateOfModified}</td>
                 <td>${kiosk.description}</td>
-                <td><a href="/web/organization/KioskController/delete/${kiosk.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Kiosk/delete/${kiosk.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Kiosk/edit/${kiosk.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Kiosk/create"><button>Create</button></a>
 </div>
 
 </body>

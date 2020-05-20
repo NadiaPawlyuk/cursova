@@ -9,7 +9,7 @@ public class DepartmentStore {
     //Універмаг
     @Id
     private String id;
-    private String name;
+    private Outlet name;
     private String numberOfSections;
     private String numberOfFloors;
     private String numberOfHalls;
@@ -25,7 +25,7 @@ public class DepartmentStore {
     public DepartmentStore() {
     }
 
-    public DepartmentStore(String id, String name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public DepartmentStore(String id, Outlet name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.name = name;
         this.numberOfSections = numberOfSections;
@@ -49,11 +49,11 @@ public class DepartmentStore {
         this.id = id;
     }
 
-    public String getName() {
+    public Outlet getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Outlet name) {
         this.name = name;
     }
 

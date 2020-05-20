@@ -37,11 +37,12 @@
                 <td>${theHeadOfTheSection.dateOfCreation}</td>
                 <td>${theHeadOfTheSection.dateOfModified}</td>
                 <td>${theHeadOfTheSection.description}</td>
-                <td><a href="/web/organization/TheHeadOfTheSection/delete/${theHeadOfTheSection.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/TheHeadOfTheSection/delete/${theHeadOfTheSection.id}"><button>Delete</button></a></td>
+                <td><a href="/web/TheHeadOfTheSection/edit/${theHeadOfTheSection.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/TheHeadOfTheSection/create"><button>Create</button></a>
 </div>
 
 </body>

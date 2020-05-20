@@ -33,11 +33,12 @@
                 <td>${order.dateOfCreation}</td>
                 <td>${order.dateOfModified}</td>
                 <td>${order.description}</td>
-                <td><a href="/web/organization/Order/delete/${order.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Order/delete/${order.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Order/edit/${order.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Order/create"><button>Create</button></a>
 </div>
 
 </body>

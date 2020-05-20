@@ -28,7 +28,7 @@ public class SellerServiceImpl implements ISellerService {
 
     @Override
     public Seller get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

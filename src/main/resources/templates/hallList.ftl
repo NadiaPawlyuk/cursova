@@ -29,11 +29,12 @@
                 <td>${hall.dateOfCreation}</td>
                 <td>${hall.dateOfModified}</td>
                 <td>${hall.description}</td>
-                <td><a href="/web/organization/HallController/delete/${hall.id}"><button>Delete</button></a></td>
-                <td><button>Edit</button></td>
+                <td><a href="/web/Hall/delete/${hall.id}"><button>Delete</button></a></td>
+                <td><a href="/web/Hall/edit/${hall.id}"><button>Edit</button></a></td>
             </tr>
         </#list>
     </table>
+    <a href="/web/Hall/create"><button>Create</button></a>
 </div>
 
 </body>

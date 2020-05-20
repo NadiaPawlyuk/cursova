@@ -28,7 +28,7 @@ public class KioskServiceImpl implements IKioskService {
 
     @Override
     public Kiosk get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

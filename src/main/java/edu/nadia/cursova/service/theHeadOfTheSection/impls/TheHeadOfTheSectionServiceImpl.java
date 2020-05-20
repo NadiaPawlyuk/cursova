@@ -28,7 +28,7 @@ public class TheHeadOfTheSectionServiceImpl implements ITheHeadOfTheSectionServi
 
     @Override
     public TheHeadOfTheSection get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

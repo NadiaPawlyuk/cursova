@@ -9,10 +9,10 @@ public class ProductsInOutlets {
     //Товари у торговельних точках
     @Id
     private String id;
-    private String externalCommunicationWithTheNomenclature;
+    private DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature;
     private String price;
     private String numberOfGoods;
-    private String externalCommunicationWithTheSupplier;
+    private Outlet outlet;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,12 +20,12 @@ public class ProductsInOutlets {
     public ProductsInOutlets() {
     }
 
-    public ProductsInOutlets(String id, String externalCommunicationWithTheNomenclature, String price, String numberOfGoods, String externalCommunicationWithTheSupplier, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public ProductsInOutlets(String id, DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature, String price, String numberOfGoods, Outlet outlet, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
         this.price = price;
         this.numberOfGoods = numberOfGoods;
-        this.externalCommunicationWithTheSupplier = externalCommunicationWithTheSupplier;
+        this.outlet = outlet;
         this.dateOfCreation = dateOfCreation;
         this.dateOfModified = dateOfModified;
         this.description = description;
@@ -39,11 +39,11 @@ public class ProductsInOutlets {
         this.id = id;
     }
 
-    public String getExternalCommunicationWithTheNomenclature() {
+    public DirectoryOfGoodsNomenclature getExternalCommunicationWithTheNomenclature() {
         return externalCommunicationWithTheNomenclature;
     }
 
-    public void setExternalCommunicationWithTheNomenclature(String externalCommunicationWithTheNomenclature) {
+    public void setExternalCommunicationWithTheNomenclature(DirectoryOfGoodsNomenclature externalCommunicationWithTheNomenclature) {
         this.externalCommunicationWithTheNomenclature = externalCommunicationWithTheNomenclature;
     }
 
@@ -63,12 +63,12 @@ public class ProductsInOutlets {
         this.numberOfGoods = numberOfGoods;
     }
 
-    public String getExternalCommunicationWithTheSupplier() {
-        return externalCommunicationWithTheSupplier;
+    public Outlet getOutlet() {
+        return outlet;
     }
 
-    public void setExternalCommunicationWithTheSupplier(String externalCommunicationWithTheSupplier) {
-        this.externalCommunicationWithTheSupplier = externalCommunicationWithTheSupplier;
+    public void setOutlet(Outlet outlet) {
+        this.outlet = outlet;
     }
 
     public LocalDateTime getDateOfCreation() {
@@ -102,7 +102,7 @@ public class ProductsInOutlets {
                 ", externalCommunicationWithTheNomenclature=" + externalCommunicationWithTheNomenclature +
                 ", price=" + price +
                 ", numberOfGoods=" + numberOfGoods +
-                ", externalCommunicationWithTheSupplier=" + externalCommunicationWithTheSupplier +
+                ", externalCommunicationWithTheSupplier=" + outlet +
                 ", dateOfCreation='" + dateOfCreation + '\'' +
                 ", dateOfChange='" + dateOfModified + '\'' +
                 '}';

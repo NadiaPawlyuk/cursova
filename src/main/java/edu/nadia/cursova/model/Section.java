@@ -10,9 +10,9 @@ public class Section {
     @Id
     private String id;
     private String nameOfTheSection;
-    private String externalCommunicationWithTheHeadOfTheSection;
+    private TheHeadOfTheSection externalCommunicationWithTheHeadOfTheSection;
     private String theFloor;
-    private String externalCommunicationWithDepartmentStore;
+    private Outlet externalCommunicationWithDepartmentStore;
     private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
@@ -20,7 +20,7 @@ public class Section {
     public Section() {
     }
 
-    public Section(String id, String nameOfTheSection, String externalCommunicationWithTheHeadOfTheSection, String theFloor, String externalCommunicationWithDepartmentStore, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Section(String id, String nameOfTheSection, TheHeadOfTheSection externalCommunicationWithTheHeadOfTheSection, String theFloor, Outlet externalCommunicationWithDepartmentStore, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.nameOfTheSection = nameOfTheSection;
         this.externalCommunicationWithTheHeadOfTheSection = externalCommunicationWithTheHeadOfTheSection;
@@ -47,11 +47,11 @@ public class Section {
         this.nameOfTheSection = nameOfTheSection;
     }
 
-    public String getExternalCommunicationWithTheHeadOfTheSection() {
+    public TheHeadOfTheSection getExternalCommunicationWithTheHeadOfTheSection() {
         return externalCommunicationWithTheHeadOfTheSection;
     }
 
-    public void setExternalCommunicationWithTheHeadOfTheSection(String externalCommunicationWithTheHeadOfTheSection) {
+    public void setExternalCommunicationWithTheHeadOfTheSection(TheHeadOfTheSection externalCommunicationWithTheHeadOfTheSection) {
         this.externalCommunicationWithTheHeadOfTheSection = externalCommunicationWithTheHeadOfTheSection;
     }
 
@@ -63,11 +63,11 @@ public class Section {
         this.theFloor = theFloor;
     }
 
-    public String getExternalCommunicationWithDepartmentStore() {
+    public Outlet getExternalCommunicationWithDepartmentStore() {
         return externalCommunicationWithDepartmentStore;
     }
 
-    public void setExternalCommunicationWithDepartmentStore(String externalCommunicationWithDepartmentStore) {
+    public void setExternalCommunicationWithDepartmentStore(Outlet externalCommunicationWithDepartmentStore) {
         this.externalCommunicationWithDepartmentStore = externalCommunicationWithDepartmentStore;
     }
 
