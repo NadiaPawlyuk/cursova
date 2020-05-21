@@ -99,7 +99,7 @@ public class SellerWEBController {
         seller.setDescription(sellerForm.getDescription());
         service.save(seller);
         model.addAttribute("sellers", service.getAll());
-        return "sellerList";
+        return "redirect:/web/Seller/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

@@ -105,7 +105,7 @@ public class DepartmentStoreWEBController {
         departmentStore.setDescription(departmentStoreForm.getDescription());
         service.save(departmentStore);
         model.addAttribute("departmentStore", service.getAll());
-        return "departmentStoreList";
+        return "redirect:/web/DepartmentStore/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

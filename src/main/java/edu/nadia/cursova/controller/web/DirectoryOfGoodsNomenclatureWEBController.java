@@ -90,7 +90,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         directoryOfGoodsNomenclature.setDescription(directoryOfGoodsNomenclatureForm.getDescription());
         service.save(directoryOfGoodsNomenclature);
         model.addAttribute("directoryOfGoodsNomenclature", service.getAll());
-        return "directoryOfGoodsNomenclatureList";
+        return "redirect:/web/DirectoryOfGoodsNomenclature/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

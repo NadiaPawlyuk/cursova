@@ -85,7 +85,7 @@ public class AccountingForBuyersWEBController {
         accountingForBuyers.setDescription(accountingForBuyersForm.getDescription());
         service.save(accountingForBuyers);
         model.addAttribute("accountingForBuyers", service.getAll());
-        return "accountingForBuyersList";
+        return "redirect:/web/AccountingForBuyers/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

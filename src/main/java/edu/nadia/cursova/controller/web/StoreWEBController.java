@@ -52,8 +52,8 @@ public class StoreWEBController {
         List<Store> sorted = service.sortByName(stores);
         SearchForm searchForm = new SearchForm();
         model.addAttribute("searchForm", searchForm);
-        model.addAttribute("accountingForBuyers", sorted);
-        return "accountingForBuyersList";
+        model.addAttribute("stores", sorted);
+        return "storeList";
     }
 
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
@@ -71,7 +71,7 @@ public class StoreWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("stores", service.getAll());
-        return "storeList";
+        return "redirect:/web/Store/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

@@ -97,7 +97,7 @@ public class HallWEBController {
         hall.setDescription(hallForm.getDescription());
         service.save(hall);
         model.addAttribute("halls", service.getAll());
-        return "hallList";
+        return "redirect:/web/Hall/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

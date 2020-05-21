@@ -48,8 +48,8 @@ public class SupplierWEBController {
         List<Supplier> sorted = service.sortByName(suppliers);
         SearchForm searchForm = new SearchForm();
         model.addAttribute("searchForm", searchForm);
-        model.addAttribute("accountingForBuyers", sorted);
-        return "accountingForBuyersList";
+        model.addAttribute("suppliers", sorted);
+        return "supplierList";
     }
 
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
@@ -67,7 +67,7 @@ public class SupplierWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("suppliers", service.getAll());
-        return "supplierList";
+        return "redirect:/web/Supplier/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
@@ -88,7 +88,7 @@ public class SupplierWEBController {
         supplier.setDescription(supplierForm.getDescription());
         service.save(supplier);
         model.addAttribute("suppliers", service.getAll());
-        return "supplierList";
+        return "redirect:/web/Supplier/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

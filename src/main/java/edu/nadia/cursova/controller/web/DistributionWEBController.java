@@ -103,7 +103,7 @@ public class DistributionWEBController {
         distribution.setDescription(distributionForm.getDescription());
         service.save(distribution);
         model.addAttribute("distributions", service.getAll());
-        return "distributionList";
+        return "redirect:/web/Distribution/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
