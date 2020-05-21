@@ -71,7 +71,7 @@ public class SellerWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("sellers", service.getAll());
-        return "sellerList";
+        return "redirect:/web/Seller/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

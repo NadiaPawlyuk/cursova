@@ -86,7 +86,7 @@ public class OutletWEBController {
         outlet.setDescription(outletForm.getDescription());
         service.save(outlet);
         model.addAttribute("outlets", service.getAll());
-        return "outletList";
+        return "redirect:/web/Outlet/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

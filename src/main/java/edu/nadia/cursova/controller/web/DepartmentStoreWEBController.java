@@ -73,7 +73,7 @@ public class DepartmentStoreWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("departmentStore", service.getAll());
-        return "departmentStoreList";
+        return "redirect:/web/DepartmentStore/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

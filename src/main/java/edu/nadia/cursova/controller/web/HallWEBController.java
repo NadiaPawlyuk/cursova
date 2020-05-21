@@ -73,7 +73,7 @@ public class HallWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("halls", service.getAll());
-        return "hallList";
+        return "redirect:/web/Hall/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

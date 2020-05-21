@@ -74,7 +74,7 @@ public class DistributionWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("distributions", service.getAll());
-        return "distributionList";
+        return "redirect:/web/Distribution/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
