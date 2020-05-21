@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OutletForm;
-import edu.nadia.cursova.form.ProductsInOutletsForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
@@ -31,11 +28,44 @@ public class ProductsInOutletsWEBController {
     
     @Autowired
     OutletServiceImpl outletService;
-    
-    @RequestMapping("/get/list")
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<ProductsInOutlets> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("productsInOutlets", service.getAll());
+        return "productsInOutletsList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<ProductsInOutlets> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsInOutlets", list);
+        return "productsInOutletsList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<ProductsInOutlets> productsInOutlets = service.getAll();
+        List<ProductsInOutlets> sorted = service.sortByName(productsInOutlets);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsInOutlets", sorted);
+        return "productsInOutletsList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<ProductsInOutlets> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsInOutlets", list);
         return "productsInOutletsList";
     }
 

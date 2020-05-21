@@ -1,11 +1,9 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OutletForm;
-import edu.nadia.cursova.form.SupplierForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.model.Distribution;
+import edu.nadia.cursova.model.Manager;
 import edu.nadia.cursova.model.Supplier;
 import edu.nadia.cursova.service.supplier.impls.SupplierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +22,43 @@ public class SupplierWEBController {
     @Autowired
     SupplierServiceImpl service;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Supplier> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("suppliers", service.getAll());
+        return "supplierList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Supplier> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("suppliers", list);
+        return "supplierList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Supplier> suppliers = service.getAll();
+        List<Supplier> sorted = service.sortByName(suppliers);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForBuyers", sorted);
+        return "accountingForBuyersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Supplier> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("suppliers", list);
         return "supplierList";
     }
 

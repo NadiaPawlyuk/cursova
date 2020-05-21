@@ -29,10 +29,43 @@ public class DistributionWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Distribution> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("distributions", service.getAll());
+        return "distributionList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Distribution> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("distributions", list);
+        return "distributionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Distribution> distributions = service.getAll();
+        List<Distribution> sorted = service.sortByName(distributions);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("distributions", sorted);
+        return "distributionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Distribution> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("distributions", list);
         return "distributionList";
     }
 

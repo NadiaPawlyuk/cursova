@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Hall</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Halls</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>Name Of The Hall</th>
+            <th>Name Of The Hall<a href="/web/Hall/sort"><button>Sort</button></a></th>
             <th>Number Of Sellers</th>
             <th>External Communication With Department Store</th>
             <th>Date Of Creation</th>

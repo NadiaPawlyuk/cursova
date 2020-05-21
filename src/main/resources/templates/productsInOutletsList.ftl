@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Products In Outlets</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Products In Outlets</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>externalCommunicationWithTheNomenclature</th>
+            <th>externalCommunicationWithTheNomenclature<a href="/web/AccountingForBuyers/sort"><button>Sort</button></a></th>
             <th>price</th>
             <th>Number Of Goods</th>
             <th>Outlet</th>

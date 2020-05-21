@@ -3,6 +3,7 @@ package edu.nadia.cursova.controller.web;
 import edu.nadia.cursova.form.AccountingForBuyersForm;
 import edu.nadia.cursova.form.DistributionForm;
 import edu.nadia.cursova.form.HallForm;
+import edu.nadia.cursova.form.SearchForm;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.hall.impls.HallServiceImpl;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
@@ -27,10 +28,43 @@ public class HallWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+   @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Hall> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("halls", service.getAll());
+        return "hallList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Hall> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("halls", list);
+        return "hallList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Hall> halls = service.getAll();
+        List<Hall> sorted = service.sortByName(halls);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("halls", sorted);
+        return "hallList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Hall> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("halls", list);
         return "hallList";
     }
 

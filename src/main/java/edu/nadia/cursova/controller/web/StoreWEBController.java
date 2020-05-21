@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OutletForm;
-import edu.nadia.cursova.form.StoreForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import edu.nadia.cursova.service.store.impls.StoreServiceImpl;
@@ -28,10 +25,44 @@ public class StoreWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Store> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("stores", service.getAll());
+        return "storeList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Store> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("stores", list);
+        return "storeList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Store> stores = service.getAll();
+        List<Store> sorted = service.sortByName(stores);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForBuyers", sorted);
+        return "accountingForBuyersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Store> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("stores", list);
         return "storeList";
     }
 

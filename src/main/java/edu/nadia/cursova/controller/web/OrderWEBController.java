@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OrderForm;
-import edu.nadia.cursova.form.OrderToTheSupplierForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import edu.nadia.cursova.service.manager.impls.ManagerServiceImpl;
@@ -36,12 +33,46 @@ public class OrderWEBController {
     @Autowired
     ManagerServiceImpl managerService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Order> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("orders", service.getAll());
         return "orderList";
     }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Order> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orders", list);
+        return "orderList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Order> orders = service.getAll();
+        List<Order> sorted = service.sortByName(orders);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orders", sorted);
+        return "orderList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Order> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orders", list);
+        return "orderList";
+    }
+
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {

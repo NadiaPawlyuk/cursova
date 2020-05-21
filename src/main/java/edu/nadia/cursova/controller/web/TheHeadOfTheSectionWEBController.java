@@ -25,9 +25,43 @@ public class TheHeadOfTheSectionWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
-    String getAll(Model model) {
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
+    String getAll(Model model)
+    {
+        List<TheHeadOfTheSection> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("theHeadOfTheSection", service.getAll());
+        return "theHeadOfTheSectionList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<TheHeadOfTheSection> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("theHeadOfTheSection", list);
+        return "theHeadOfTheSectionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<TheHeadOfTheSection> theHeadOfTheSections = service.getAll();
+        List<TheHeadOfTheSection> sorted = service.sortByName(theHeadOfTheSections);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("theHeadOfTheSection", sorted);
+        return "theHeadOfTheSectionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<TheHeadOfTheSection> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("theHeadOfTheSection", list);
         return "theHeadOfTheSectionList";
     }
 

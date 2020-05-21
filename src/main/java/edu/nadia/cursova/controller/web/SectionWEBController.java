@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OutletForm;
-import edu.nadia.cursova.form.SectionForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import edu.nadia.cursova.service.section.impls.SectionServiceImpl;
@@ -32,10 +29,43 @@ public class SectionWEBController {
    @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Section> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("sections", service.getAll());
+        return "sectionList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Section> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("sections", list);
+        return "sectionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Section> sections = service.getAll();
+        List<Section> sorted = service.sortByName(sections);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("sections", sorted);
+        return "sectionList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Section> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("sections", list);
         return "sectionList";
     }
 

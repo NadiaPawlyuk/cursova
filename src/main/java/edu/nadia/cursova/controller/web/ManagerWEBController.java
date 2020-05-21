@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.KioskForm;
-import edu.nadia.cursova.form.ManagerForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.manager.impls.ManagerServiceImpl;
 import edu.nadia.cursova.service.organizationOfTrade.impls.OrganizationOfTradeServiceImpl;
@@ -28,10 +25,43 @@ public class ManagerWEBController {
     @Autowired
     OrganizationOfTradeServiceImpl organizationOfTradeService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Manager> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("managers", service.getAll());
+        return "managerList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Manager> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("managers", list);
+        return "managerList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Manager> managers = service.getAll();
+        List<Manager> sorted = service.sortByName(managers);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("managers", sorted);
+        return "managerList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Manager> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("managers", list);
         return "managerList";
     }
 

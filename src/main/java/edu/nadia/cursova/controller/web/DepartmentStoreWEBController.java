@@ -3,10 +3,8 @@ package edu.nadia.cursova.controller.web;
 import edu.nadia.cursova.form.AccountingForBuyersForm;
 import edu.nadia.cursova.form.AccountingForGoodsSoldForm;
 import edu.nadia.cursova.form.DepartmentStoreForm;
-import edu.nadia.cursova.model.AccountingForBuyers;
-import edu.nadia.cursova.model.DepartmentStore;
-import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
-import edu.nadia.cursova.model.Outlet;
+import edu.nadia.cursova.form.SearchForm;
+import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.departmentStore.impls.DepartmentStoreServiceImpl;
 import edu.nadia.cursova.service.departmentStore.interfaces.IDepartmentStoreService;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
@@ -31,9 +29,42 @@ public class DepartmentStoreWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model) {
+        List<DepartmentStore> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("departmentStore", service.getAll());
+        return "departmentStoreList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<DepartmentStore> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("departmentStore", list);
+        return "departmentStoreList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<DepartmentStore> departmentStores = service.getAll();
+        List<DepartmentStore> sorted = service.sortByName(departmentStores);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("departmentStore", sorted);
+        return "departmentStoreList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<DepartmentStore> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("departmentStore", list);
         return "departmentStoreList";
     }
 
@@ -61,6 +92,7 @@ public class DepartmentStoreWEBController {
     String create(Model model, @ModelAttribute("departmentStoreForm") DepartmentStoreForm departmentStoreForm){
         DepartmentStore departmentStore = new DepartmentStore();
         Outlet outlet = outletService.get(departmentStoreForm.getName());
+        departmentStore.setNameOfTheStore(departmentStoreForm.getNameOfTheStore());
         departmentStore.setName(outlet);
         departmentStore.setNumberOfSections(departmentStoreForm.getNumberOfSections());
         departmentStore.setNumberOfFloors(departmentStoreForm.getNumberOfFloors());
@@ -83,6 +115,7 @@ public class DepartmentStoreWEBController {
                 .collect(Collectors.toMap(Outlet::getId, Outlet::getName));
         DepartmentStore departmentStore = service.get(id);
         DepartmentStoreForm departmentStoreForm = new DepartmentStoreForm();
+        departmentStoreForm.setNameOfTheStore(departmentStore.getNameOfTheStore());
         departmentStoreForm.setName(departmentStore.getName().getName());
         departmentStoreForm.setNumberOfSections(departmentStore.getNumberOfSections());
         departmentStoreForm.setNumberOfFloors(departmentStore.getNumberOfFloors());
@@ -103,6 +136,7 @@ public class DepartmentStoreWEBController {
         DepartmentStore departmentStore = new DepartmentStore();
         Outlet outlet = outletService.get(departmentStoreForm.getName());
         departmentStore.setId(id);
+        departmentStore.setNameOfTheStore(departmentStoreForm.getNameOfTheStore());
         departmentStore.setName(outlet);
         departmentStore.setNumberOfSections(departmentStoreForm.getNumberOfSections());
         departmentStore.setNumberOfFloors(departmentStoreForm.getNumberOfFloors());

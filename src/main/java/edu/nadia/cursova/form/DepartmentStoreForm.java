@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class DepartmentStoreForm {
 
+    private String nameOfTheStore;
     private String name;
     private String numberOfSections;
     private String numberOfFloors;
@@ -18,7 +19,8 @@ public class DepartmentStoreForm {
     public DepartmentStoreForm() {
     }
 
-    public DepartmentStoreForm(String name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, String description) {
+    public DepartmentStoreForm(String nameOfTheStore, String name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, String description) {
+        this.nameOfTheStore = nameOfTheStore;
         this.name = name;
         this.numberOfSections = numberOfSections;
         this.numberOfFloors = numberOfFloors;
@@ -111,10 +113,19 @@ public class DepartmentStoreForm {
         this.description = description;
     }
 
+    public String getNameOfTheStore() {
+        return nameOfTheStore;
+    }
+
+    public void setNameOfTheStore(String nameOfTheStore) {
+        this.nameOfTheStore = nameOfTheStore;
+    }
+
     @Override
     public String toString() {
         return "DepartmentStoreForm{" +
-                "name='" + name + '\'' +
+                "nameOfTheStore='" + nameOfTheStore + '\'' +
+                ", name='" + name + '\'' +
                 ", numberOfSections='" + numberOfSections + '\'' +
                 ", numberOfFloors='" + numberOfFloors + '\'' +
                 ", numberOfHalls='" + numberOfHalls + '\'' +

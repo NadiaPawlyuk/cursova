@@ -1,14 +1,21 @@
 package edu.nadia.cursova.service.distribution.impls;
 
 import edu.nadia.cursova.dao.repository.DistributionRepository;
+import edu.nadia.cursova.model.AccountingForBuyers;
+import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
 import edu.nadia.cursova.model.Distribution;
+import edu.nadia.cursova.service.accountingForBuyers.impls.AccountingForBuyersServiceImpl;
 import edu.nadia.cursova.service.distribution.interfaces.IDistributionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class DistributionServiceImpl implements IDistributionService {
     @Autowired
@@ -47,5 +54,26 @@ public class DistributionServiceImpl implements IDistributionService {
         Distribution distribution = repository.findById(id).orElse(null);
         repository.deleteById(id);
         return distribution;
+    }
+
+
+    public List<Distribution> search(String word){
+        List<Distribution> found = this.getAll().stream()
+                .filter(distribution -> distribution.getDescription().contains(word))
+                .collect(Collectors.toList());
+        return found;
+    }
+
+    public List<Distribution> sortByName(List<Distribution> people){
+
+        Collections.sort(people, new DistributionServiceImpl.DistributionNameComparator());
+
+        return people;
+    }
+
+    private class DistributionNameComparator implements Comparator<Distribution> {
+        public int compare(Distribution p1, Distribution p2) {
+            return p1.getPrice().compareTo(p2.getPrice());
+        }
     }
 }

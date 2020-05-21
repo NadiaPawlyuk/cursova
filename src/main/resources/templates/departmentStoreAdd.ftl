@@ -7,6 +7,8 @@
 </head>
 <body>
 <form name="departmentStore" action="" method="POST">
+    Name Of The Department Store:<@spring.formInput "departmentStoreForm.nameOfTheStore" "" "text"/>
+    <br>
     DepartmentStore Name:<@spring.formSingleSelect "departmentStoreForm.name", mavs, ""/>
     <br>
     DepartmentStore Number Of Sections:<@spring.formInput "departmentStoreForm.numberOfSections" "" "text"/>

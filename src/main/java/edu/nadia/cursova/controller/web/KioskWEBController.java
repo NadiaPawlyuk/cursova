@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.HallForm;
-import edu.nadia.cursova.form.KioskForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.kiosk.impls.KioskServiceImpl;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
@@ -28,12 +25,46 @@ public class KioskWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
-   String getAll(Model model)
+   @RequestMapping(value = "/get/list", method = RequestMethod.GET)
+    String getAll(Model model)
     {
+        List<Kiosk> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("kiosks", service.getAll());
         return "kioskList";
     }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Kiosk> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("kiosks", list);
+        return "kioskList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Kiosk> kiosks = service.getAll();
+        List<Kiosk> sorted = service.sortByName(kiosks);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("kiosks", sorted);
+        return "kioskList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Kiosk> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("kiosks", list);
+        return "kioskList";
+    }
+
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {

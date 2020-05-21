@@ -1,9 +1,6 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.ManagerForm;
-import edu.nadia.cursova.form.OrderToTheSupplierForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import edu.nadia.cursova.service.orderToTheSupplier.impls.OrderToTheSupplierServiceImpl;
@@ -29,10 +26,44 @@ public class OrderToTheSupplierWEBController {
    @Autowired
    OutletServiceImpl outletService;
 
-    @RequestMapping("/get/list")
+
+   @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<OrderToTheSupplier> list = orderToTheSupplierService.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("orderToTheSupplier", orderToTheSupplierService.getAll());
+        return "orderToTheSupplierList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<OrderToTheSupplier> list = orderToTheSupplierService.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orderToTheSupplier", list);
+        return "orderToTheSupplierList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<OrderToTheSupplier> orderToTheSuppliers = orderToTheSupplierService.getAll();
+        List<OrderToTheSupplier> sorted = orderToTheSupplierService.sortByName(orderToTheSuppliers);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orderToTheSupplier", sorted);
+        return "orderToTheSupplierList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<OrderToTheSupplier> list = orderToTheSupplierService.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("orderToTheSupplier", list);
         return "orderToTheSupplierList";
     }
 

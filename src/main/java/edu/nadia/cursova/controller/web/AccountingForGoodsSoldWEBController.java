@@ -3,6 +3,7 @@ package edu.nadia.cursova.controller.web;
 import edu.nadia.cursova.form.AccountingForBuyersForm;
 import edu.nadia.cursova.form.AccountingForGoodsSoldForm;
 import edu.nadia.cursova.form.OrderToTheSupplierForm;
+import edu.nadia.cursova.form.SearchForm;
 import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.accountingForBuyers.impls.AccountingForBuyersServiceImpl;
 import edu.nadia.cursova.service.accountingForBuyers.interfaces.IAccountingForBuyersService;
@@ -37,10 +38,43 @@ public class AccountingForGoodsSoldWEBController {
     @Autowired
     AccountingForBuyersServiceImpl accountingForBuyersService;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<AccountingForGoodsSold> list = accountingForGoodsSoldService.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("accountingForGoodsSold", accountingForGoodsSoldService.getAll());
+        return "accountingForGoodsSoldList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<AccountingForGoodsSold> list = accountingForGoodsSoldService.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForGoodsSold", list);
+        return "accountingForGoodsSoldList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<AccountingForGoodsSold> accountingForGoodsSolds = accountingForGoodsSoldService.getAll();
+        List<AccountingForGoodsSold> sorted = accountingForGoodsSoldService.sortByName(accountingForGoodsSolds);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForGoodsSold", sorted);
+        return "accountingForGoodsSoldList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<AccountingForGoodsSold> list = accountingForGoodsSoldService.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForGoodsSold", list);
         return "accountingForGoodsSoldList";
     }
 
@@ -77,6 +111,7 @@ public class AccountingForGoodsSoldWEBController {
         DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = directoryOfGoodsNomenclatureService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods());
         Seller seller = sellerService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheSeller());
         AccountingForBuyers accountingForBuyers = accountingForBuyersService.get(accountingForGoodsSoldForm.getExternalCommunicationWithCustomerAccounting());
+        accountingForGoodsSold.setNameOfGoods(accountingForGoodsSoldForm.getNameOfGoods());
         accountingForGoodsSold.setOfftake(accountingForGoodsSoldForm.getOfftake());
         accountingForGoodsSold.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(directoryOfGoodsNomenclature);
         accountingForGoodsSold.setExternalCommunicationWithCustomerAccounting(accountingForBuyers);
@@ -99,6 +134,7 @@ public class AccountingForGoodsSoldWEBController {
 
         AccountingForGoodsSold accountingForGoodsSold = accountingForGoodsSoldService.get(id);
         AccountingForGoodsSoldForm accountingForGoodsSoldForm = new AccountingForGoodsSoldForm();
+        accountingForGoodsSoldForm.setNameOfGoods(accountingForGoodsSold.getNameOfGoods());
         accountingForGoodsSoldForm.setOfftake(accountingForGoodsSold.getOfftake());
         accountingForGoodsSoldForm.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(accountingForGoodsSold.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods().getTheNameOfTheProduct());
         accountingForGoodsSoldForm.setExternalCommunicationWithCustomerAccounting(accountingForGoodsSold.getExternalCommunicationWithCustomerAccounting().getInitials());
@@ -118,6 +154,7 @@ public class AccountingForGoodsSoldWEBController {
         Seller seller = sellerService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheSeller());
         AccountingForBuyers accountingForBuyers = accountingForBuyersService.get(accountingForGoodsSoldForm.getExternalCommunicationWithCustomerAccounting());
         accountingForGoodsSold.setId(id);
+        accountingForGoodsSold.setNameOfGoods(accountingForGoodsSoldForm.getNameOfGoods());
         accountingForGoodsSold.setOfftake(accountingForGoodsSoldForm.getOfftake());
         accountingForGoodsSold.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(directoryOfGoodsNomenclature);
         accountingForGoodsSold.setExternalCommunicationWithCustomerAccounting(accountingForBuyers);

@@ -1,6 +1,7 @@
 package edu.nadia.cursova.controller.web;
 
 import edu.nadia.cursova.form.AccountingForBuyersForm;
+import edu.nadia.cursova.form.SearchForm;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.service.accountingForBuyers.impls.AccountingForBuyersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,43 @@ public class AccountingForBuyersWEBController {
    @Autowired
     AccountingForBuyersServiceImpl service;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<AccountingForBuyers> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("accountingForBuyers", service.getAll());
+        return "accountingForBuyersList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<AccountingForBuyers> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForBuyers", list);
+        return "accountingForBuyersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<AccountingForBuyers> accountingForBuyers = service.getAll();
+        List<AccountingForBuyers> sorted = service.sortByName(accountingForBuyers);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForBuyers", sorted);
+        return "accountingForBuyersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<AccountingForBuyers> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("accountingForBuyers", list);
         return "accountingForBuyersList";
     }
 

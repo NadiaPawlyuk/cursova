@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Section</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Section</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>Name Of The Section</th>
+            <th>Name Of The Section<a href="/web/Section/sort"><button>Sort</button></a></th>
             <th>External Communication With The Head Of The Section</th>
             <th>The Floor</th>
             <th>External Communication With Department Store</th>

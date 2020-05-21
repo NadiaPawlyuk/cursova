@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class AccountingForGoodsSoldForm {
     private String offtake;
+    private String nameOfGoods;
     private String externalCommunicationWithTheDirectoryOfNomenclatureGoods;
     private String externalCommunicationWithTheSeller;
     private String externalCommunicationWithCustomerAccounting;
@@ -12,12 +13,21 @@ public class AccountingForGoodsSoldForm {
     public AccountingForGoodsSoldForm() {
     }
 
-    public AccountingForGoodsSoldForm(String offtake, String externalCommunicationWithTheDirectoryOfNomenclatureGoods, String externalCommunicationWithTheSeller, String externalCommunicationWithCustomerAccounting, String description) {
+    public AccountingForGoodsSoldForm(String offtake, String nameOfGoods, String externalCommunicationWithTheDirectoryOfNomenclatureGoods, String externalCommunicationWithTheSeller, String externalCommunicationWithCustomerAccounting, String description) {
         this.offtake = offtake;
+        this.nameOfGoods = nameOfGoods;
         this.externalCommunicationWithTheDirectoryOfNomenclatureGoods = externalCommunicationWithTheDirectoryOfNomenclatureGoods;
         this.externalCommunicationWithTheSeller = externalCommunicationWithTheSeller;
         this.externalCommunicationWithCustomerAccounting = externalCommunicationWithCustomerAccounting;
         this.description = description;
+    }
+
+    public String getNameOfGoods() {
+        return nameOfGoods;
+    }
+
+    public void setNameOfGoods(String nameOfGoods) {
+        this.nameOfGoods = nameOfGoods;
     }
 
     public String getOfftake() {
@@ -64,6 +74,7 @@ public class AccountingForGoodsSoldForm {
     public String toString() {
         return "AccountingForGoodsSoldForm{" +
                 "offtake='" + offtake + '\'' +
+                ", nameOfGoods='" + nameOfGoods + '\'' +
                 ", externalCommunicationWithTheDirectoryOfNomenclatureGoods='" + externalCommunicationWithTheDirectoryOfNomenclatureGoods + '\'' +
                 ", externalCommunicationWithTheSeller='" + externalCommunicationWithTheSeller + '\'' +
                 ", externalCommunicationWithCustomerAccounting='" + externalCommunicationWithCustomerAccounting + '\'' +

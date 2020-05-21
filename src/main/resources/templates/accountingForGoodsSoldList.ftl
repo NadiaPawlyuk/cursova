@@ -7,10 +7,23 @@
 </head>
 <body>
 <h3>Accounting For Goods Sold</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Goods</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
+            <th>Name Of Goods<a href="/web/AccountingForGoodsSold/sort"><button>Sort</button></a></th>
             <th>Offtake</th>
             <th>External Communication With The Directory Of Nomenclature Goods</th>
             <th>External Communication With The Seller</th>
@@ -24,6 +37,7 @@
         <#list accountingForGoodsSold as accountingForGoodsSold>
             <tr>
                 <td>${accountingForGoodsSold.id}</td>
+                <td>${accountingForGoodsSold.nameOfGoods}</td>
                 <td>${accountingForGoodsSold.offtake}</td>
                 <td>${accountingForGoodsSold.externalCommunicationWithTheDirectoryOfNomenclatureGoods}</td>
                 <td>${accountingForGoodsSold.externalCommunicationWithTheSeller}</td>

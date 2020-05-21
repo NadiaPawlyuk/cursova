@@ -1,11 +1,9 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OrderForm;
-import edu.nadia.cursova.form.OrganizationOfTradeForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.model.Distribution;
+import edu.nadia.cursova.model.Manager;
 import edu.nadia.cursova.model.OrganizationOfTrade;
 import edu.nadia.cursova.service.organizationOfTrade.impls.OrganizationOfTradeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +22,43 @@ public class OrganizationOfTradeWEBController {
    @Autowired
     OrganizationOfTradeServiceImpl service;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<OrganizationOfTrade> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("organizationOfTrade", service.getAll());
+        return "organizationOfTradeList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<OrganizationOfTrade> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("organizationOfTrade", list);
+        return "organizationOfTradeList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<OrganizationOfTrade> organizationOfTrades = service.getAll();
+        List<OrganizationOfTrade> sorted = service.sortByName(organizationOfTrades);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("organizationOfTrade", sorted);
+        return "organizationOfTradeList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<OrganizationOfTrade> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("organizationOfTrade", list);
         return "organizationOfTradeList";
     }
 

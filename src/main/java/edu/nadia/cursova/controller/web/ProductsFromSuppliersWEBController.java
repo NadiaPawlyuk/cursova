@@ -29,9 +29,43 @@ public class ProductsFromSuppliersWEBController {
     @Autowired
     SupplierServiceImpl supplierService;
 
-    @RequestMapping("/get/list")
-    String getAll(Model model) {
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
+    String getAll(Model model)
+    {
+        List<ProductsFromSuppliers> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("productsFromSuppliers", service.getAll());
+        return "productsFromSuppliersList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<ProductsFromSuppliers> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsFromSuppliers", list);
+        return "productsFromSuppliersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<ProductsFromSuppliers> productsFromSuppliers = service.getAll();
+        List<ProductsFromSuppliers> sorted = service.sortByName(productsFromSuppliers);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsFromSuppliers", sorted);
+        return "productsFromSuppliersList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<ProductsFromSuppliers> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("productsFromSuppliers", list);
         return "productsFromSuppliersList";
     }
 

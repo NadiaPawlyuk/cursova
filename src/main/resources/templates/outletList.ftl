@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Outlet</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Outlet</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Name<a href="/web/Outlet/sort"><button>Sort</button></a></th>
             <th>Kind Of Outlet</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>

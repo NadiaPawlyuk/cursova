@@ -7,10 +7,23 @@
 </head>
 <body>
 <h3>Department Store</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Department Store</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
+            <th>Name Of The Department Store<a href="/web/DepartmentStore/sort"><button>Sort</button></a></th>
             <th>Name</th>
             <th>Number Of Sections</th>
             <th>Number Of Floors</th>
@@ -29,6 +42,7 @@
         <#list departmentStore as departmentStore>
             <tr>
                 <td>${departmentStore.id}</td>
+                <td>${departmentStore.nameOfTheStore}</td>
                 <td>${departmentStore.name}</td>
                 <td>${departmentStore.numberOfSections}</td>
                 <td>${departmentStore.numberOfFloors}</td>

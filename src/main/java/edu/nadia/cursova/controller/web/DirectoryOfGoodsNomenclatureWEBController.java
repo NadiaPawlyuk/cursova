@@ -4,7 +4,9 @@ package edu.nadia.cursova.controller.web;
 import edu.nadia.cursova.form.AccountingForBuyersForm;
 import edu.nadia.cursova.form.DepartmentStoreForm;
 import edu.nadia.cursova.form.DirectoryOfGoodsNomenclatureForm;
+import edu.nadia.cursova.form.SearchForm;
 import edu.nadia.cursova.model.AccountingForBuyers;
+import edu.nadia.cursova.model.DepartmentStore;
 import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,43 @@ public class DirectoryOfGoodsNomenclatureWEBController {
     @Autowired
     DirectoryOfGoodsNomenclatureServiceImpl service;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<DirectoryOfGoodsNomenclature> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("directoryOfGoodsNomenclature", service.getAll());
+        return "directoryOfGoodsNomenclatureList";
+    }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<DirectoryOfGoodsNomenclature> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("directoryOfGoodsNomenclature", list);
+        return "directoryOfGoodsNomenclatureList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<DirectoryOfGoodsNomenclature> directoryOfGoodsNomenclatures = service.getAll();
+        List<DirectoryOfGoodsNomenclature> sorted = service.sortByName(directoryOfGoodsNomenclatures);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("directoryOfGoodsNomenclature", sorted);
+        return "directoryOfGoodsNomenclatureList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<DirectoryOfGoodsNomenclature> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("directoryOfGoodsNomenclature", list);
         return "directoryOfGoodsNomenclatureList";
     }
 

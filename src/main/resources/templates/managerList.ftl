@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Manager</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Managers</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>Initials</th>
+            <th>Initials<a href="/web/Manager/sort"><button>Sort</button></a></th>
             <th>Date Of Birthday</th>
             <th>Date Of Hiring</th>
             <th>Number Of Phone</th>

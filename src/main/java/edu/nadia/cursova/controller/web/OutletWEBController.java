@@ -1,11 +1,9 @@
 package edu.nadia.cursova.controller.web;
 
-import edu.nadia.cursova.form.AccountingForBuyersForm;
-import edu.nadia.cursova.form.DistributionForm;
-import edu.nadia.cursova.form.OrganizationOfTradeForm;
-import edu.nadia.cursova.form.OutletForm;
+import edu.nadia.cursova.form.*;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.model.Distribution;
+import edu.nadia.cursova.model.Manager;
 import edu.nadia.cursova.model.Outlet;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +22,46 @@ public class OutletWEBController {
     @Autowired
     OutletServiceImpl service;
 
-    @RequestMapping("/get/list")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
+        List<Outlet> list = service.getAll();
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
         model.addAttribute("outlets", service.getAll());
         return "outletList";
     }
+
+    @RequestMapping(value = "/get/list", method = RequestMethod.POST)
+    String search(Model model,
+                  @ModelAttribute("searchForm") SearchForm searchForm){
+        String word = searchForm.getString();
+        List<Outlet> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("outlets", list);
+        return "outletList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    public String showSorted(Model model) {
+        List<Outlet> outlets = service.getAll();
+        List<Outlet> sorted = service.sortByName(outlets);
+        SearchForm searchForm = new SearchForm();
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("outlets", sorted);
+        return "outletList";
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.POST)
+    public String searchSorted(Model model,
+                               @ModelAttribute("searchForm") SearchForm searchForm) {
+        String word = searchForm.getString();
+        List<Outlet> list = service.search(word);
+        model.addAttribute("searchForm", searchForm);
+        model.addAttribute("outlets", list);
+        return "outletList";
+    }
+
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {

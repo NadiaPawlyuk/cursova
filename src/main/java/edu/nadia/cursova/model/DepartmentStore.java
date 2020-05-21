@@ -9,6 +9,7 @@ public class DepartmentStore {
     //Універмаг
     @Id
     private String id;
+    private String nameOfTheStore;
     private Outlet name;
     private String numberOfSections;
     private String numberOfFloors;
@@ -25,8 +26,9 @@ public class DepartmentStore {
     public DepartmentStore() {
     }
 
-    public DepartmentStore(String id, Outlet name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public DepartmentStore(String id, String nameOfTheStore, Outlet name, String numberOfSections, String numberOfFloors, String numberOfHalls, String numberOfCounters, String address, String theSizeOfTheOutlet, String rent, String utilities, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
+        this.nameOfTheStore = nameOfTheStore;
         this.name = name;
         this.numberOfSections = numberOfSections;
         this.numberOfFloors = numberOfFloors;
@@ -39,6 +41,14 @@ public class DepartmentStore {
         this.dateOfCreation = dateOfCreation;
         this.dateOfModified = dateOfModified;
         this.description = description;
+    }
+
+    public String getNameOfTheStore() {
+        return nameOfTheStore;
+    }
+
+    public void setNameOfTheStore(String nameOfTheStore) {
+        this.nameOfTheStore = nameOfTheStore;
     }
 
     public String getId() {
@@ -148,18 +158,19 @@ public class DepartmentStore {
     @Override
     public String toString() {
         return "DepartmentStore{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", numberOfSections=" + numberOfSections +
-                ", numberOfFloors=" + numberOfFloors +
-                ", numberOfHalls=" + numberOfHalls +
-                ", numberOfCounters=" + numberOfCounters +
+                "id='" + id + '\'' +
+                ", nameOfTheStore='" + nameOfTheStore + '\'' +
+                ", name=" + name +
+                ", numberOfSections='" + numberOfSections + '\'' +
+                ", numberOfFloors='" + numberOfFloors + '\'' +
+                ", numberOfHalls='" + numberOfHalls + '\'' +
+                ", numberOfCounters='" + numberOfCounters + '\'' +
                 ", address='" + address + '\'' +
                 ", theSizeOfTheOutlet='" + theSizeOfTheOutlet + '\'' +
-                ", rent=" + rent +
-                ", utilities=" + utilities +
-                ", dateOfCreation='" + dateOfCreation + '\'' +
-                ", dateOfModified='" + dateOfModified + '\'' +
+                ", rent='" + rent + '\'' +
+                ", utilities='" + utilities + '\'' +
+                ", dateOfCreation=" + dateOfCreation +
+                ", dateOfModified=" + dateOfModified +
                 ", description='" + description + '\'' +
                 '}';
     }

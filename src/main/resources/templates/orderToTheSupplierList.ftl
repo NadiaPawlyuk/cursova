@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Order To The Supplier</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Order To The Supplier</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>The Name Of The Product</th>
+            <th>The Name Of The Product<a href="/web/OrderToTheSupplier/sort"><button>Sort</button></a></th>
             <th>Number Of Goods</th>
             <th>External Communication With Nomenclature</th>
             <th>Date Of Creation</th>

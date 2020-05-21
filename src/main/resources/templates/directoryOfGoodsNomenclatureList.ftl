@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Directory Of Goods Nomenclature</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Directory Of Goods Nomenclature</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>The Name Of The Product</th>
+            <th>The Name Of The Product<a href="/web/DirectoryOfGoodsNomenclature/sort"><button>Sort</button></a></th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
             <th>Description</th>

@@ -7,11 +7,23 @@
 </head>
 <body>
 <h3>Organization Of Trade</h3>
+
+<div>
+    <fieldset>
+        <legend>Find Organization Of Trade</legend>
+        <form name="search" action="" method="POST">
+            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            <br>
+            <input type="submit" value="Search">
+        </form>
+    </fieldset>
+</div>
+
 <div>
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>Name Of Organization</th>
+            <th>Name Of Organization<a href="/web/OrganizationOfTrade/sort"><button>Sort</button></a></th>
             <th>Phone Number</th>
             <th>Address</th>
             <th>Number Of Managers</th>
