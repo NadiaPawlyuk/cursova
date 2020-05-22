@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Organization Of Trade</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            Name Of Organization:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>

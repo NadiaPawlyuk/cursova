@@ -59,7 +59,7 @@ public class KioskServiceImpl implements IKioskService {
 
     public List<Kiosk> search(String word){
         List<Kiosk> found = this.getAll().stream()
-                .filter(kiosk -> kiosk.getDescription().contains(word))
+                .filter(kiosk -> kiosk.getAddress().contains(word))
                 .collect(Collectors.toList());
         return found;
     }

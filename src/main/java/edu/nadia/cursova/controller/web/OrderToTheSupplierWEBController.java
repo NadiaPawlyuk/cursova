@@ -72,7 +72,7 @@ public class OrderToTheSupplierWEBController {
                   @PathVariable("id") String id) {
         orderToTheSupplierService.delete(id);
         model.addAttribute("orderToTheSupplier", orderToTheSupplierService.getAll());
-        return "orderToTheSupplierList";
+        return "redirect:/web/OrderToTheSupplier/get/list";
     }
 
 

@@ -60,7 +60,7 @@ public class StoreServiceImpl implements IStoreService {
 
     public List<Store> search(String word){
         List<Store> found = this.getAll().stream()
-                .filter(store -> store.getNumberOfSellers().contains(word))
+                .filter(store -> store.getAddress().contains(word))
                 .collect(Collectors.toList());
         return found;
     }

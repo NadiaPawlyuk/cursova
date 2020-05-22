@@ -7,9 +7,9 @@
 </head>
 <body>
 <form name="accountigForGoodsSold" action="" method="POST">
-    AccountingForGoodsSold Offtake:<@spring.formInput "accountingForGoodsSoldForm.offtake" "" "text"/>
-    <br>
     Name Of Goods:<@spring.formInput "accountingForGoodsSoldForm.nameOfGoods" "" "text"/>
+    <br>
+    AccountingForGoodsSold Offtake:<@spring.formInput "accountingForGoodsSoldForm.offtake" "" "text"/>
     <br>
     AccountingForGoodsSold ExternalCommunicationWithTheDirectoryOfNomenclatureGoods:<@spring.formSingleSelect "accountingForGoodsSoldForm.externalCommunicationWithTheDirectoryOfNomenclatureGoods", mavs1, ""/>
     <br>

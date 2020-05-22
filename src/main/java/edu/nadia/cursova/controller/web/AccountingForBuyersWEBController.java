@@ -65,7 +65,7 @@ public class AccountingForBuyersWEBController {
                 @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("accountingForBuyers", service.getAll());
-        return "accountingForBuyersList";
+        return "redirect:/web/AccountingForBuyers/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

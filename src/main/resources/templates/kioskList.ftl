@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Kiosks</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            Address:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,10 +23,10 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>Name of the kiosk<a href="/web/AccountingForBuyers/sort"><button>Sort</button></a></th>
+            <th>Name of the kiosk</th>
             <th>Number Of Sellers</th>
             <th>Number Of Counters</th>
-            <th>Address</th>
+            <th>Address<a href="/web/Kiosk/sort"><button>Sort</button></a></th>
             <th>The Size Of The Outlet</th>
             <th>Rent</th>
             <th>Utilities</th>

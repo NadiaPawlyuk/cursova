@@ -59,7 +59,7 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     public List<ProductsInOutlets> search(String word){
         List<ProductsInOutlets> found = this.getAll().stream()
-                .filter(productsInOutlets -> productsInOutlets.getDescription().contains(word))
+                .filter(productsInOutlets -> productsInOutlets.getPrice().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class ProductsInOutletsServiceImpl implements IProductsInOutletsService {
 
     private class ProductsInOutletsNameComparator implements Comparator<ProductsInOutlets> {
         public int compare(ProductsInOutlets p1, ProductsInOutlets p2) {
-            return p1.getPrice().compareTo(p2.getPrice());
+            return p1.getDescription().compareTo(p2.getDescription());
         }
     }
 }

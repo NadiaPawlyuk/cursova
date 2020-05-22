@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Store</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            Address:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,11 +23,11 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>Name Of The Store<a href="/web/Store/sort"><button>Sort</button></a></th>
+            <th>Name Of The Store</th>
             <th>Number Of Sellers</th>
             <th>Number Of Halls</th>
             <th>Number Of Counters</th>
-            <th>Address</th>
+            <th>Address<a href="/web/Store/sort"><button>Sort</button></a></th>
             <th>The Size Of TheOutlet</th>
             <th>Rent</th>
             <th>Utilities</th>

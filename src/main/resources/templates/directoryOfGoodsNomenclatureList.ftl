@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Directory Of Goods Nomenclature</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            The Name Of The Product:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>

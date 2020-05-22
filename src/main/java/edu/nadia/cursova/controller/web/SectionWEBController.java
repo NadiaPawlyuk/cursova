@@ -74,7 +74,7 @@ public class SectionWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("sections", service.getAll());
-        return "sectionList";
+        return "redirect:/web/Section/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

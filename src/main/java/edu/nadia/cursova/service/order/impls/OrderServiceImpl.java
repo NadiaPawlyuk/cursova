@@ -74,7 +74,7 @@ public class OrderServiceImpl implements IOrderService {
 
     private class OrderNameComparator implements Comparator<Order> {
         public int compare(Order p1, Order p2) {
-            return p1.getPrice().compareTo(p2.getPrice());
+            return p1.getDescription().compareTo(p2.getDescription());
         }
     }
 }

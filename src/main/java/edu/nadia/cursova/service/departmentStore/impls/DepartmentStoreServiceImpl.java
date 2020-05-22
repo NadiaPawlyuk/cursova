@@ -59,7 +59,7 @@ public class DepartmentStoreServiceImpl implements IDepartmentStoreService {
 
     public List<DepartmentStore> search(String word){
         List<DepartmentStore> found = this.getAll().stream()
-                .filter(departmentStore -> departmentStore.getDescription().contains(word))
+                .filter(departmentStore -> departmentStore.getNameOfTheStore().contains(word))
                 .collect(Collectors.toList());
         return found;
     }

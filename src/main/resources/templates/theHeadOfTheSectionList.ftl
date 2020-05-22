@@ -23,7 +23,7 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th><a href="/web/TheHeadOfTheSection/sort"><button>Sort</button></a></th>
+            <th>Initials<a href="/web/TheHeadOfTheSection/sort"><button>Sort</button></a></th>
             <th>Date Of Birth</th>
             <th>Date Of Hiring</th>
             <th>Number Of Phone</th>

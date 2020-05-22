@@ -70,7 +70,7 @@ public class ManagerWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("managers", service.getAll());
-        return "managerList";
+        return "redirect:/web/Manager/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

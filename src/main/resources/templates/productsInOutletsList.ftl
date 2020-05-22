@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Products In Outlets</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            Price:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,13 +23,13 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>externalCommunicationWithTheNomenclature<a href="/web/AccountingForBuyers/sort"><button>Sort</button></a></th>
-            <th>price</th>
+            <th>externalCommunicationWithTheNomenclature</th>
+            <th>Price</th>
             <th>Number Of Goods</th>
             <th>Outlet</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
-            <th>Description</th>
+            <th>Description<a href="/web/ProductsInOutlets/sort"><button>Sort</button></a></th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>

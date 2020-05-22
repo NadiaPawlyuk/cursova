@@ -74,7 +74,7 @@ public class ProductsFromSuppliersWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("productsFromSuppliers", service.getAll());
-        return "productsFromSuppliersList";
+        return "redirect:/web/ProductsFromSuppliers/get/list";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

@@ -83,7 +83,7 @@ public class AccountingForGoodsSoldWEBController {
                   @PathVariable("id") String id) {
         accountingForGoodsSoldService.delete(id);
         model.addAttribute("accountingForGoodsSold", accountingForGoodsSoldService.getAll());
-        return "accountingForGoodsSoldList";
+        return "redirect:/web/AccountingForGoodsSold/get/list";
     }
 
 

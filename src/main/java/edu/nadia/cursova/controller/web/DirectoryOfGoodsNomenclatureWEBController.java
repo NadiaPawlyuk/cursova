@@ -71,7 +71,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("directoryOfGoodsNomenclature", service.getAll());
-        return "directoryOfGoodsNomenclatureList";
+        return "redirect:/web/DirectoryOfGoodsNomenclature/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

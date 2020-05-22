@@ -70,7 +70,7 @@ public class KioskWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("kiosks", service.getAll());
-        return "kioskList";
+        return "redirect:/web/Kiosk/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

@@ -67,7 +67,7 @@ public class OrganizationOfTradeWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("organizationOfTrade", service.getAll());
-        return "organizationOfTradeList";
+        return "redirect:/web/OrganizationOfTrade/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)

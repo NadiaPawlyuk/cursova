@@ -70,7 +70,7 @@ public class TheHeadOfTheSectionWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("theHeadOfTheSection", service.getAll());
-        return "theHeadOfTheSectionList";
+        return "redirect:/web/TheHeadOfTheSection/get/list";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

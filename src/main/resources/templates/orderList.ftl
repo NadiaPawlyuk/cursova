@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Orders</legend>
         <form name="search" action="" method="POST">
-            Initials:<@spring.formInput "searchForm.string" "" "text"/>
+            Price:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,14 +23,14 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>External Communication With Nomenclature<a href="/web/AccountingForBuyers/sort"><button>Sort</button></a></th>
+            <th>External Communication With Nomenclature</th>
             <th>Number Of Goods</th>
             <th>External Communication With Supplier</th>
             <th>External Communication With Managers</th>
             <th>Price</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
-            <th>Description</th>
+            <th>Description<a href="/web/Order/sort"><button>Sort</button></a></th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>

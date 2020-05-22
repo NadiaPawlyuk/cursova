@@ -67,7 +67,7 @@ public class OutletWEBController {
                   @PathVariable("id") String id) {
         service.delete(id);
         model.addAttribute("outlets", service.getAll());
-        return "outletList";
+        return "redirect:/web/Outlet/get/list";
     }
 
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
