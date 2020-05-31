@@ -59,7 +59,7 @@ public class KioskServiceImpl implements IKioskService {
 
     public List<Kiosk> search(String word){
         List<Kiosk> found = this.getAll().stream()
-                .filter(kiosk -> kiosk.getAddress().contains(word))
+                .filter(kiosk -> kiosk.getNameOfTheKiosk().getName().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class KioskServiceImpl implements IKioskService {
 
     private class KioskNameComparator implements Comparator<Kiosk> {
         public int compare(Kiosk p1, Kiosk p2) {
-            return p1.getAddress().compareTo(p2.getAddress());
+            return p1.getNameOfTheKiosk().getName().compareTo(p2.getNameOfTheKiosk().getName());
         }
     }
 }

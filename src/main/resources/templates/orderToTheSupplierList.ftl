@@ -37,7 +37,7 @@
                 <td>${orderToTheSupplier.id}</td>
                 <td>${orderToTheSupplier.theNameOfTheProduct}</td>
                 <td>${orderToTheSupplier.numberOfGoods}</td>
-                <td>${orderToTheSupplier.externalCommunicationWithNomenclature}</td>
+                <td>${orderToTheSupplier.externalCommunicationWithNomenclature.name}</td>
                 <td>${orderToTheSupplier.dateOfCreation}</td>
                 <td>${orderToTheSupplier.dateOfModified}</td>
                 <td>${orderToTheSupplier.description}</td>

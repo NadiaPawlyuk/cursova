@@ -37,7 +37,7 @@
                 <td>${hall.id}</td>
                 <td>${hall.nameOfTheHall}</td>
                 <td>${hall.numberOfSellers}</td>
-                <td>${hall.externalCommunicationWithDepartmentStore}</td>
+                <td>${hall.externalCommunicationWithDepartmentStore.name}</td>
                 <td>${hall.dateOfCreation}</td>
                 <td>${hall.dateOfModified}</td>
                 <td>${hall.description}</td>

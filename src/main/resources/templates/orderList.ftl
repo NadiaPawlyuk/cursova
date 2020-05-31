@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Orders</legend>
         <form name="search" action="" method="POST">
-            Price:<@spring.formInput "searchForm.string" "" "text"/>
+            Name Of Goods:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,24 +23,24 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>ID</th>
-            <th>External Communication With Nomenclature</th>
+            <th>Name Of Goods<a href="/web/Order/sort"><button>Sort</button></a></th>
             <th>Number Of Goods</th>
             <th>External Communication With Supplier</th>
             <th>External Communication With Managers</th>
             <th>Price</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
-            <th>Description<a href="/web/Order/sort"><button>Sort</button></a></th>
+            <th>Description<</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
         <#list orders as order>
             <tr>
                 <td>${order.id}</td>
-                <td>${order.externalCommunicationWithNomenclature}</td>
+                <td>${order.externalCommunicationWithNomenclature.theNameOfTheProduct}</td>
                 <td>${order.numberOfGoods}</td>
-                <td>${order.externalCommunicationWithSupplier}</td>
-                <td>${order.externalCommunicationWithManagers}</td>
+                <td>${order.externalCommunicationWithSupplier.initials}</td>
+                <td>${order.externalCommunicationWithManagers.initials}</td>
                 <td>${order.price}</td>
                 <td>${order.dateOfCreation}</td>
                 <td>${order.dateOfModified}</td>

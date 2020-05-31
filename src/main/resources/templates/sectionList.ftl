@@ -37,9 +37,9 @@
             <tr>
                 <td>${section.id}</td>
                 <td>${section.nameOfTheSection}</td>
-                <td>${section.externalCommunicationWithTheHeadOfTheSection}</td>
+                <td>${section.externalCommunicationWithTheHeadOfTheSection.initials}</td>
                 <td>${section.theFloor}</td>
-                <td>${section.externalCommunicationWithDepartmentStore}</td>
+                <td>${section.externalCommunicationWithDepartmentStore.name}</td>
                 <td>${section.dateOfCreation}</td>
                 <td>${section.dateOfModified}</td>
                 <td>${section.description}</td>

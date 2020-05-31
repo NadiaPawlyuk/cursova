@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Distribution</legend>
         <form name="search" action="" method="POST">
-            Price:<@spring.formInput "searchForm.string" "" "text"/>
+            Name Of Goods:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,23 +23,23 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>External Communication With The Nomenclature</th>
+            <th>Name Of Goods<a href="/web/Distribution/sort"><button>Sort</button></a></th>
             <th>Number Of Goods</th>
             <th>Price</th>
             <th>External Communication With The Outlet</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
-            <th>Description<a href="/web/Distribution/sort"><button>Sort</button></a></th>
+            <th>Description</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
         <#list distributions as distribution>
             <tr>
                 <td>${distribution.id}</td>
-                <td>${distribution.externalCommunicationWithTheNomenclature}</td>
+                <td>${distribution.externalCommunicationWithTheNomenclature.theNameOfTheProduct}</td>
                 <td>${distribution.numberOfGoods}</td>
                 <td>${distribution.price}</td>
-                <td>${distribution.externalCommunicationWithTheOutlet}</td>
+                <td>${distribution.externalCommunicationWithTheOutlet.name}</td>
                 <td>${distribution.dateOfCreation}</td>
                 <td>${distribution.dateOfModified}</td>
                 <td>${distribution.description}</td>

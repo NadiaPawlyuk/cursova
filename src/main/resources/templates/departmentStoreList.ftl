@@ -43,7 +43,7 @@
             <tr>
                 <td>${departmentStore.id}</td>
                 <td>${departmentStore.nameOfTheStore}</td>
-                <td>${departmentStore.name}</td>
+                <td>${departmentStore.name.name}</td>
                 <td>${departmentStore.numberOfSections}</td>
                 <td>${departmentStore.numberOfFloors}</td>
                 <td>${departmentStore.numberOfHalls}</td>

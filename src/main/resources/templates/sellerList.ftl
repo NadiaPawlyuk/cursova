@@ -45,7 +45,7 @@
                 <td>${seller.numberOfPhone}</td>
                 <td>${seller.address}</td>
                 <td>${seller.salary}</td>
-                <td>${seller.externalCommunicationWithThePlaceOfWork}</td>
+                <td>${seller.externalCommunicationWithThePlaceOfWork.name}</td>
                 <td>${seller.dateOfCreation}</td>
                 <td>${seller.dateOfModified}</td>
                 <td>${seller.description}</td>

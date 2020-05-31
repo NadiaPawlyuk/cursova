@@ -45,7 +45,7 @@
                 <td>${theHeadOfTheSection.numberOfPhone}</td>
                 <td>${theHeadOfTheSection.address}</td>
                 <td>${theHeadOfTheSection.salary}</td>
-                <td>${theHeadOfTheSection.externalCommunicationWithThePlaceOfWork}</td>
+                <td>${theHeadOfTheSection.externalCommunicationWithThePlaceOfWork.name}</td>
                 <td>${theHeadOfTheSection.dateOfCreation}</td>
                 <td>${theHeadOfTheSection.dateOfModified}</td>
                 <td>${theHeadOfTheSection.description}</td>

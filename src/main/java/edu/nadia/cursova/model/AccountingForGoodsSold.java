@@ -10,7 +10,6 @@ public class AccountingForGoodsSold {
     @Id
     private String id;
     private String offtake;
-    private String nameOfGoods;
     private DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods;
     private Seller externalCommunicationWithTheSeller;
     private AccountingForBuyers externalCommunicationWithCustomerAccounting;
@@ -21,10 +20,9 @@ public class AccountingForGoodsSold {
     public AccountingForGoodsSold() {
     }
 
-    public AccountingForGoodsSold(String id, String offtake, String nameOfGoods, DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods, Seller externalCommunicationWithTheSeller, AccountingForBuyers externalCommunicationWithCustomerAccounting, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public AccountingForGoodsSold(String id, String offtake, DirectoryOfGoodsNomenclature externalCommunicationWithTheDirectoryOfNomenclatureGoods, Seller externalCommunicationWithTheSeller, AccountingForBuyers externalCommunicationWithCustomerAccounting, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.offtake = offtake;
-        this.nameOfGoods = nameOfGoods;
         this.externalCommunicationWithTheDirectoryOfNomenclatureGoods = externalCommunicationWithTheDirectoryOfNomenclatureGoods;
         this.externalCommunicationWithTheSeller = externalCommunicationWithTheSeller;
         this.externalCommunicationWithCustomerAccounting = externalCommunicationWithCustomerAccounting;
@@ -97,20 +95,11 @@ public class AccountingForGoodsSold {
         this.description = description;
     }
 
-    public String getNameOfGoods() {
-        return nameOfGoods;
-    }
-
-    public void setNameOfGoods(String nameOfGoods) {
-        this.nameOfGoods = nameOfGoods;
-    }
-
     @Override
     public String toString() {
         return "AccountingForGoodsSold{" +
                 "id='" + id + '\'' +
                 ", offtake='" + offtake + '\'' +
-                ", nameOfGoods='" + nameOfGoods + '\'' +
                 ", externalCommunicationWithTheDirectoryOfNomenclatureGoods=" + externalCommunicationWithTheDirectoryOfNomenclatureGoods +
                 ", externalCommunicationWithTheSeller=" + externalCommunicationWithTheSeller +
                 ", externalCommunicationWithCustomerAccounting=" + externalCommunicationWithCustomerAccounting +

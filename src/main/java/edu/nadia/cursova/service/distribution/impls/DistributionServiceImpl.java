@@ -59,7 +59,7 @@ public class DistributionServiceImpl implements IDistributionService {
 
     public List<Distribution> search(String word){
         List<Distribution> found = this.getAll().stream()
-                .filter(distribution -> distribution.getPrice().contains(word))
+                .filter(distribution -> distribution.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class DistributionServiceImpl implements IDistributionService {
 
     private class DistributionNameComparator implements Comparator<Distribution> {
         public int compare(Distribution p1, Distribution p2) {
-            return p1.getDescription().compareTo(p2.getDescription());
+            return p1.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct().compareTo(p2.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct());
         }
     }
 }

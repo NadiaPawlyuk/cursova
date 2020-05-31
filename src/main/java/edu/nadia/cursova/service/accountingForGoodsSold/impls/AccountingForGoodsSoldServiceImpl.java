@@ -56,7 +56,7 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
 
     public List<AccountingForGoodsSold> search(String word){
         List<AccountingForGoodsSold> found = this.getAll().stream()
-                .filter(accountingForGoodsSold -> accountingForGoodsSold.getNameOfGoods().contains(word))
+                .filter(accountingForGoodsSold -> accountingForGoodsSold.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods().getTheNameOfTheProduct().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -70,7 +70,7 @@ public class AccountingForGoodsSoldServiceImpl implements IAccountingForGoodsSol
 
     private class AccountingForGoodsSoldNameComparator implements Comparator<AccountingForGoodsSold> {
         public int compare(AccountingForGoodsSold p1, AccountingForGoodsSold p2) {
-            return p1.getNameOfGoods().compareTo(p2.getNameOfGoods());
+            return p1.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods().getTheNameOfTheProduct().compareTo(p2.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods().getTheNameOfTheProduct());
         }
     }
 }

@@ -111,7 +111,6 @@ public class AccountingForGoodsSoldWEBController {
         DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = directoryOfGoodsNomenclatureService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods());
         Seller seller = sellerService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheSeller());
         AccountingForBuyers accountingForBuyers = accountingForBuyersService.get(accountingForGoodsSoldForm.getExternalCommunicationWithCustomerAccounting());
-        accountingForGoodsSold.setNameOfGoods(accountingForGoodsSoldForm.getNameOfGoods());
         accountingForGoodsSold.setOfftake(accountingForGoodsSoldForm.getOfftake());
         accountingForGoodsSold.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(directoryOfGoodsNomenclature);
         accountingForGoodsSold.setExternalCommunicationWithCustomerAccounting(accountingForBuyers);
@@ -134,7 +133,6 @@ public class AccountingForGoodsSoldWEBController {
 
         AccountingForGoodsSold accountingForGoodsSold = accountingForGoodsSoldService.get(id);
         AccountingForGoodsSoldForm accountingForGoodsSoldForm = new AccountingForGoodsSoldForm();
-        accountingForGoodsSoldForm.setNameOfGoods(accountingForGoodsSold.getNameOfGoods());
         accountingForGoodsSoldForm.setOfftake(accountingForGoodsSold.getOfftake());
         accountingForGoodsSoldForm.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(accountingForGoodsSold.getExternalCommunicationWithTheDirectoryOfNomenclatureGoods().getTheNameOfTheProduct());
         accountingForGoodsSoldForm.setExternalCommunicationWithCustomerAccounting(accountingForGoodsSold.getExternalCommunicationWithCustomerAccounting().getInitials());
@@ -154,7 +152,6 @@ public class AccountingForGoodsSoldWEBController {
         Seller seller = sellerService.get(accountingForGoodsSoldForm.getExternalCommunicationWithTheSeller());
         AccountingForBuyers accountingForBuyers = accountingForBuyersService.get(accountingForGoodsSoldForm.getExternalCommunicationWithCustomerAccounting());
         accountingForGoodsSold.setId(id);
-        accountingForGoodsSold.setNameOfGoods(accountingForGoodsSoldForm.getNameOfGoods());
         accountingForGoodsSold.setOfftake(accountingForGoodsSoldForm.getOfftake());
         accountingForGoodsSold.setExternalCommunicationWithTheDirectoryOfNomenclatureGoods(directoryOfGoodsNomenclature);
         accountingForGoodsSold.setExternalCommunicationWithCustomerAccounting(accountingForBuyers);

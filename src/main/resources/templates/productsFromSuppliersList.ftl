@@ -12,7 +12,7 @@
     <fieldset>
         <legend>Find Products From Supplier</legend>
         <form name="search" action="" method="POST">
-            Price:<@spring.formInput "searchForm.string" "" "text"/>
+            Name Of Goods:<@spring.formInput "searchForm.string" "" "text"/>
             <br>
             <input type="submit" value="Search">
         </form>
@@ -23,23 +23,23 @@
     <table border="3", bgcolor="f0f8ff">
         <tr>
             <th>Id</th>
-            <th>External Communication With The Nomenclature</th>
+            <th>Name Of Goods<a href="/web/ProductsFromSuppliers/sort"><button>Sort</button></a></th>
             <th>Price</th>
             <th>Number Of Goods</th>
             <th>External Communication With The Supplier</th>
             <th>Date Of Creation</th>
             <th>Date Of Modified</th>
-            <th>Description<a href="/web/ProductsFromSuppliers/sort"><button>Sort</button></a></th>
+            <th>Description</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
         <#list productsFromSuppliers as productsFromSupplier>
             <tr>
                 <td>${productsFromSupplier.id}</td>
-                <td>${productsFromSupplier.externalCommunicationWithTheNomenclature}</td>
+                <td>${productsFromSupplier.externalCommunicationWithTheNomenclature.theNameOfTheProduct}</td>
                 <td>${productsFromSupplier.price}</td>
                 <td>${productsFromSupplier.numberOfGoods}</td>
-                <td>${productsFromSupplier.externalCommunicationWithTheSupplier}</td>
+                <td>${productsFromSupplier.externalCommunicationWithTheSupplier.initials}</td>
                 <td>${productsFromSupplier.dateOfCreation}</td>
                 <td>${productsFromSupplier.dateOfModified}</td>
                 <td>${productsFromSupplier.description}</td>

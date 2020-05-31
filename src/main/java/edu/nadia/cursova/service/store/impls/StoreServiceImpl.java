@@ -60,7 +60,7 @@ public class StoreServiceImpl implements IStoreService {
 
     public List<Store> search(String word){
         List<Store> found = this.getAll().stream()
-                .filter(store -> store.getAddress().contains(word))
+                .filter(store -> store.getNameOfTheStore().getName().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -74,7 +74,7 @@ public class StoreServiceImpl implements IStoreService {
 
     private class StoreNameComparator implements Comparator<Store> {
         public int compare(Store p1, Store p2) {
-            return p1.getAddress().compareTo(p2.getAddress());
+            return p1.getNameOfTheStore().getName().compareTo(p2.getNameOfTheStore().getName());
         }
     }
 

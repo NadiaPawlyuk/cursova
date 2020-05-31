@@ -59,7 +59,7 @@ public class ProductsFromSuppliersServiceImpl implements IProductsFromSuppliersS
 
     public List<ProductsFromSuppliers> search(String word){
         List<ProductsFromSuppliers> found = this.getAll().stream()
-                .filter(productsFromSuppliers -> productsFromSuppliers.getPrice().contains(word))
+                .filter(productsFromSuppliers -> productsFromSuppliers.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class ProductsFromSuppliersServiceImpl implements IProductsFromSuppliersS
 
     private class ProductsFromSuppliersNameComparator implements Comparator<ProductsFromSuppliers> {
         public int compare(ProductsFromSuppliers p1, ProductsFromSuppliers p2) {
-            return p1.getDescription().compareTo(p2.getDescription());
+            return p1.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct().compareTo(p2.getExternalCommunicationWithTheNomenclature().getTheNameOfTheProduct());
         }
     }
 

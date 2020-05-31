@@ -59,7 +59,7 @@ public class OrderServiceImpl implements IOrderService {
 
     public List<Order> search(String word){
         List<Order> found = this.getAll().stream()
-                .filter(order -> order.getPrice().contains(word))
+                .filter(order -> order.getExternalCommunicationWithNomenclature().getTheNameOfTheProduct().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -74,7 +74,7 @@ public class OrderServiceImpl implements IOrderService {
 
     private class OrderNameComparator implements Comparator<Order> {
         public int compare(Order p1, Order p2) {
-            return p1.getDescription().compareTo(p2.getDescription());
+            return p1.getExternalCommunicationWithNomenclature().getTheNameOfTheProduct().compareTo(p2.getExternalCommunicationWithNomenclature().getTheNameOfTheProduct());
         }
     }
 }

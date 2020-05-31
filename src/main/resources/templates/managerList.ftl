@@ -45,7 +45,7 @@
                 <td>${manager.numberOfPhone}</td>
                 <td>${manager.address}</td>
                 <td>${manager.salary}</td>
-                <td>${manager.externalCommunicationWithThePlaceOfWork}</td>
+                <td>${manager.externalCommunicationWithThePlaceOfWork.nameOfOrganization}</td>
                 <td>${manager.dateOfCreation}</td>
                 <td>${manager.dateOfModified}</td>
                 <td>${manager.description}</td>
