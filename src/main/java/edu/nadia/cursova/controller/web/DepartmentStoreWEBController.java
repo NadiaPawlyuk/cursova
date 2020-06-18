@@ -92,7 +92,6 @@ public class DepartmentStoreWEBController {
     String create(Model model, @ModelAttribute("departmentStoreForm") DepartmentStoreForm departmentStoreForm){
         DepartmentStore departmentStore = new DepartmentStore();
         Outlet outlet = outletService.get(departmentStoreForm.getName());
-        departmentStore.setNameOfTheStore(departmentStoreForm.getNameOfTheStore());
         departmentStore.setName(outlet);
         departmentStore.setNumberOfSections(departmentStoreForm.getNumberOfSections());
         departmentStore.setNumberOfFloors(departmentStoreForm.getNumberOfFloors());
@@ -115,7 +114,6 @@ public class DepartmentStoreWEBController {
                 .collect(Collectors.toMap(Outlet::getId, Outlet::getName));
         DepartmentStore departmentStore = service.get(id);
         DepartmentStoreForm departmentStoreForm = new DepartmentStoreForm();
-        departmentStoreForm.setNameOfTheStore(departmentStore.getNameOfTheStore());
         departmentStoreForm.setName(departmentStore.getName().getName());
         departmentStoreForm.setNumberOfSections(departmentStore.getNumberOfSections());
         departmentStoreForm.setNumberOfFloors(departmentStore.getNumberOfFloors());
@@ -136,7 +134,6 @@ public class DepartmentStoreWEBController {
         DepartmentStore departmentStore = new DepartmentStore();
         Outlet outlet = outletService.get(departmentStoreForm.getName());
         departmentStore.setId(id);
-        departmentStore.setNameOfTheStore(departmentStoreForm.getNameOfTheStore());
         departmentStore.setName(outlet);
         departmentStore.setNumberOfSections(departmentStoreForm.getNumberOfSections());
         departmentStore.setNumberOfFloors(departmentStoreForm.getNumberOfFloors());

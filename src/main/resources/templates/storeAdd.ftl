@@ -3,29 +3,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Store</title>
 </head>
-<body>
-<form name="store" action="" method="POST">
-    Store Name Of The Store:<@spring.formSingleSelect "storeForm.nameOfTheStore", mavs, ""/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="store" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+     Name Of The Store:<@spring.formSingleSelect "storeForm.nameOfTheStore", mavs, ""/>
     <br>
-    Store Number Of Sellers:<@spring.formInput "storeForm.numberOfSellers" "" "text"/>
+     Number Of Sellers:<@spring.formInput "storeForm.numberOfSellers" "" "text"/>
     <br>
-    Store Number Of Halls:<@spring.formInput "storeForm.numberOfHalls" "" "text"/>
+     Number Of Halls:<@spring.formInput "storeForm.numberOfHalls" "" "text"/>
     <br>
-    Store Number Of Counters:<@spring.formInput "storeForm.numberOfCounters" "" "text"/>
+     Number Of Counters:<@spring.formInput "storeForm.numberOfCounters" "" "text"/>
     <br>
-    Store Address:<@spring.formInput "storeForm.address" "" "text"/>
+     Address:<@spring.formInput "storeForm.address" "" "text"/>
     <br>
-    Store The Size Of TheOutlet:<@spring.formInput "storeForm.theSizeOfTheOutlet" "" "text"/>
+     The Size Of TheOutlet:<@spring.formInput "storeForm.theSizeOfTheOutlet" "" "text"/>
     <br>
-    Store Rent:<@spring.formInput "storeForm.rent" "" "text"/>
+     Rent:<@spring.formInput "storeForm.rent" "" "text"/>
     <br>
-    Store Utilities:<@spring.formInput "storeForm.utilities" "" "text"/>
+     Utilities:<@spring.formInput "storeForm.utilities" "" "text"/>
     <br>
-    Store Description:<@spring.formInput "storeForm.description" "" "text"/>
+     Description:<@spring.formInput "storeForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

@@ -3,23 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Order</title>
 </head>
-<body>
-<form name="order" action="" method="POST">
-    Order External Communication With Nomenclature:<@spring.formSingleSelect "orderForm.externalCommunicationWithNomenclature", mavs1, ""/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="order" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+    Goods:<@spring.formSingleSelect "orderForm.externalCommunicationWithNomenclature", mavs1, ""/>
     <br>
-    Order Number Of Goods:<@spring.formInput "orderForm.numberOfGoods" "" "text"/>
+      Number Of Goods:<@spring.formInput "orderForm.numberOfGoods" "" "text"/>
     <br>
-    Order External Communication With Supplier:<@spring.formSingleSelect "orderForm.externalCommunicationWithSupplier", mavs2, ""/>
+       Supplier:<@spring.formSingleSelect "orderForm.externalCommunicationWithSupplier", mavs2, ""/>
     <br>
-    Order External Communication With Managers:<@spring.formSingleSelect "orderForm.externalCommunicationWithManagers", mavs3, ""/>
+     Manager:<@spring.formSingleSelect "orderForm.externalCommunicationWithManagers", mavs3, ""/>
     <br>
-    Order Price:<@spring.formInput  "orderForm.price" "" "text"/>
+      Price:<@spring.formInput  "orderForm.price" "" "text"/>
     <br>
-    Order Description:<@spring.formInput  "orderForm.description" "" "text"/>
+      Description:<@spring.formInput  "orderForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

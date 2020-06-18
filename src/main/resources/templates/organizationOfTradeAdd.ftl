@@ -3,21 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Organization Of Trade </title>
 </head>
-<body>
-<form name="organizationOfTrade" action="" method="POST">
-    OrganizationOfTrade Name Of Organization:<@spring.formInput "organizationOfTradeForm.nameOfOrganization" "" "text"/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="organizationOfTrade" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+    Name Of Organization:<@spring.formInput "organizationOfTradeForm.nameOfOrganization" "" "text"/>
     <br>
-    OrganizationOfTrade Number Of Phone:<@spring.formInput "organizationOfTradeForm.phoneNumber" "" "text"/>
+    Number Of Phone:<@spring.formInput "organizationOfTradeForm.phoneNumber" "" "text"/>
     <br>
-    OrganizationOfTrade Address:<@spring.formInput  "organizationOfTradeForm.address" "" "text"/>
+    Address:<@spring.formInput  "organizationOfTradeForm.address" "" "text"/>
     <br>
-    OrganizationOfTrade Number Of Managers:<@spring.formInput  "organizationOfTradeForm.numberOfManagers" "" "text"/>
+    Number Of Managers:<@spring.formInput  "organizationOfTradeForm.numberOfManagers" "" "text"/>
     <br>
-    OrganizationOfTrade Description:<@spring.formInput  "organizationOfTradeForm.description" "" "text"/>
+    Description:<@spring.formInput  "organizationOfTradeForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit"value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

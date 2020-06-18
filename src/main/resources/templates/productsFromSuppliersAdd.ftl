@@ -3,21 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Products From Suppliers</title>
 </head>
-<body>
-<form name="productsFromSuppliers" action="" method="POST">
-    ProductsFromSuppliers External Communication With The Nomenclature:<@spring.formSingleSelect "productsFromSuppliersForm.externalCommunicationWithTheNomenclature", mavs1, ""/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="productsFromSuppliers" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+    Directory Of Goods Nomenclature:<@spring.formSingleSelect "productsFromSuppliersForm.externalCommunicationWithTheNomenclature", mavs1, ""/>
     <br>
-    ProductsFromSuppliers Price:<@spring.formInput "productsFromSuppliersForm.price" "" "text"/>
+     Price:<@spring.formInput "productsFromSuppliersForm.price" "" "text"/>
     <br>
-    ProductsFromSuppliers Number Of Goods:<@spring.formInput  "productsFromSuppliersForm.numberOfGoods" "" "text"/>
+     Number Of Goods:<@spring.formInput  "productsFromSuppliersForm.numberOfGoods" "" "text"/>
     <br>
-    ProductsFromSuppliers External Communication With The Supplier:<@spring.formSingleSelect  "productsFromSuppliersForm.externalCommunicationWithTheSupplier", mavs2, ""/>
+     Supplier:<@spring.formSingleSelect  "productsFromSuppliersForm.externalCommunicationWithTheSupplier", mavs2, ""/>
     <br>
-    ProductsFromSuppliers Description:<@spring.formInput  "productsFromSuppliersForm.description" "" "text"/>
+     Description:<@spring.formInput  "productsFromSuppliersForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

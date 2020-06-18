@@ -9,21 +9,19 @@ public class Hall {
     //Зал
     @Id
     private String id;
-    private String nameOfTheHall;
+    private Outlet nameOfTheHall;
     private String numberOfSellers;
-    private Outlet externalCommunicationWithDepartmentStore;
-    private LocalDateTime dateOfCreation;
+   private LocalDateTime dateOfCreation;
     private LocalDateTime dateOfModified;
     private String description;
 
     public Hall() {
     }
 
-    public Hall(String id, String nameOfTheHall, String numberOfSellers, Outlet externalCommunicationWithDepartmentStore, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
+    public Hall(String id, Outlet nameOfTheHall, String numberOfSellers, LocalDateTime dateOfCreation, LocalDateTime dateOfModified, String description) {
         this.id = id;
         this.nameOfTheHall = nameOfTheHall;
         this.numberOfSellers = numberOfSellers;
-        this.externalCommunicationWithDepartmentStore = externalCommunicationWithDepartmentStore;
         this.dateOfCreation = dateOfCreation;
         this.dateOfModified = dateOfModified;
         this.description = description;
@@ -37,11 +35,11 @@ public class Hall {
         this.id = id;
     }
 
-    public String getNameOfTheHall() {
+    public Outlet getNameOfTheHall() {
         return nameOfTheHall;
     }
 
-    public void setNameOfTheHall(String nameOfTheHall) {
+    public void setNameOfTheHall(Outlet nameOfTheHall) {
         this.nameOfTheHall = nameOfTheHall;
     }
 
@@ -51,14 +49,6 @@ public class Hall {
 
     public void setNumberOfSellers(String numberOfSellers) {
         this.numberOfSellers = numberOfSellers;
-    }
-
-    public Outlet getExternalCommunicationWithDepartmentStore() {
-        return externalCommunicationWithDepartmentStore;
-    }
-
-    public void setExternalCommunicationWithDepartmentStore(Outlet externalCommunicationWithDepartmentStore) {
-        this.externalCommunicationWithDepartmentStore = externalCommunicationWithDepartmentStore;
     }
 
     public LocalDateTime getDateOfCreation() {
@@ -88,12 +78,11 @@ public class Hall {
     @Override
     public String toString() {
         return "Hall{" +
-                "id=" + id +
-                ", nameOfTheHall='" + nameOfTheHall + '\'' +
-                ", numberOfSellers=" + numberOfSellers +
-                ", externalCommunicationWithDepartmentStore=" + externalCommunicationWithDepartmentStore +
-                ", dateOfCreation='" + dateOfCreation + '\'' +
-                ", dateOfModified='" + dateOfModified + '\'' +
+                "id='" + id + '\'' +
+                ", nameOfTheHall=" + nameOfTheHall +
+                ", numberOfSellers='" + numberOfSellers + '\'' +
+                ", dateOfCreation=" + dateOfCreation +
+                ", dateOfModified=" + dateOfModified +
                 ", description='" + description + '\'' +
                 '}';
     }

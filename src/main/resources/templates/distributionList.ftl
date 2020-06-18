@@ -3,32 +3,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Distribution</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-<h3>Distribution</h3>
+<body style="width: 100%; height: 100%; background: #bab5bf">
+<h3 class="text-center mb-4 pt-3">Distribution</h3>
 
 <div>
-    <fieldset>
-        <legend>Find Distribution</legend>
+    <fieldset class="text-center" style="color: #262621">
+        <legend>Find Distribution By Name Of Goods</legend>
         <form name="search" action="" method="POST">
-            Name Of Goods:<@spring.formInput "searchForm.string" "" "text"/>
+            <@spring.formInput "searchForm.string" "" "text"/>
             <br>
-            <input type="submit" value="Search">
+            <input class="btn btn-dark mt-1" type="submit" value="Search">
         </form>
     </fieldset>
 </div>
 
+<div class="btn btn-dark">
+    <a  href="http://localhost:8080/" style="color: #f8f7cc">Main page</a>
+</div>
+<a href="/web/Distribution/create"><button class="btn btn-dark">Create</button></a>
+
 <div>
-    <table border="3", bgcolor="f0f8ff">
-        <tr>
+    <table border="3" class="table mt-4">
+        <tr class="thead-dark">
             <th>Id</th>
             <th>Name Of Goods<a href="/web/Distribution/sort"><button>Sort</button></a></th>
             <th>Number Of Goods</th>
             <th>Price</th>
-            <th>External Communication With The Outlet</th>
-            <th>Date Of Creation</th>
-            <th>Date Of Modified</th>
+            <th>Outlet</th>
             <th>Description</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -40,15 +44,12 @@
                 <td>${distribution.numberOfGoods}</td>
                 <td>${distribution.price}</td>
                 <td>${distribution.externalCommunicationWithTheOutlet.name}</td>
-                <td>${distribution.dateOfCreation}</td>
-                <td>${distribution.dateOfModified}</td>
                 <td>${distribution.description}</td>
-                <td><a href="/web/Distribution/delete/${distribution.id}"><button>Delete</button></a></td>
-                <td><a href="/web/Distribution/edit/${distribution.id}"><button>Edit</button></a></td>
+                <td><a href="/web/Distribution/delete/${distribution.id}"><button class="btn btn-dark">Delete</button></a></td>
+                <td><a href="/web/Distribution/edit/${distribution.id}"><button class="btn btn-dark">Edit</button></a></td>
             </tr>
         </#list>
     </table>
-    <a href="/web/Distribution/create"><button>Create</button></a>
 
 </div>
 

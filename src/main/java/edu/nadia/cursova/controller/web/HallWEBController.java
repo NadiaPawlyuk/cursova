@@ -90,10 +90,9 @@ public class HallWEBController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("hallForm") HallForm hallForm){
         Hall hall = new Hall();
-        Outlet outlet = outletService.get(hallForm.getExternalCommunicationWithDepartmentStore());
-        hall.setNameOfTheHall(hallForm.getNameOfTheHall());
+        Outlet outlet = outletService.get(hallForm.getNameOfTheHall());
         hall.setNumberOfSellers(hallForm.getNumberOfSellers());
-        hall.setExternalCommunicationWithDepartmentStore(outlet);
+        hall.setNameOfTheHall(outlet);
         hall.setDescription(hallForm.getDescription());
         service.save(hall);
         model.addAttribute("halls", service.getAll());
@@ -107,9 +106,8 @@ public class HallWEBController {
         Map<String, String> mavs = outletService.getAll().stream()
                 .collect(Collectors.toMap(Outlet::getId, Outlet::getName));
         HallForm hallForm = new HallForm();
-        hallForm.setNameOfTheHall(hall.getNameOfTheHall());
+        hallForm.setNameOfTheHall(hall.getNameOfTheHall().getName());
         hallForm.setNumberOfSellers(hall.getNumberOfSellers());
-        hallForm.setExternalCommunicationWithDepartmentStore(hall.getExternalCommunicationWithDepartmentStore().getName());
         hallForm.setDescription(hall.getDescription());
         model.addAttribute("mavs", mavs);
         model.addAttribute("hallForm", hallForm);
@@ -119,11 +117,10 @@ public class HallWEBController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("hallForm") HallForm hallForm){
         Hall hall = new Hall();
-        Outlet outlet = outletService.get(hallForm.getExternalCommunicationWithDepartmentStore());
+        Outlet outlet = outletService.get(hallForm.getNameOfTheHall());
         hall.setId(id);
-        hall.setNameOfTheHall(hallForm.getNameOfTheHall());
+        hall.setNameOfTheHall(outlet);
         hall.setNumberOfSellers(hallForm.getNumberOfSellers());
-        hall.setExternalCommunicationWithDepartmentStore(outlet);
         hall.setDescription(hallForm.getDescription());
         service.save(hall);
         model.addAttribute("hall", service.getAll());

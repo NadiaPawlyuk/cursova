@@ -59,7 +59,7 @@ public class HallServiceImpl implements IHallService {
 
     public List<Hall> search(String word){
         List<Hall> found = this.getAll().stream()
-                .filter(hall -> hall.getNameOfTheHall().contains(word))
+                .filter(hall -> hall.getNameOfTheHall().getName().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class HallServiceImpl implements IHallService {
 
     private class HallNameComparator implements Comparator<Hall> {
         public int compare(Hall p1, Hall p2) {
-            return p1.getNameOfTheHall().compareTo(p2.getNameOfTheHall());
+            return p1.getNameOfTheHall().getName().compareTo(p2.getNameOfTheHall().getName());
         }
     }
 }

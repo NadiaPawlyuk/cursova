@@ -3,32 +3,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Section</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-<h3>Section</h3>
+<body style="width: 100%; height: 100%; background: #bab5bf">
+<h3 class="text-center mb-4 pt-3">Section</h3>
 
 <div>
-    <fieldset>
-        <legend>Find Section</legend>
+    <fieldset class="text-center" style="color: #262621">
+        <legend>Find Section By Name</legend>
         <form name="search" action="" method="POST">
-            Name Of The Section:<@spring.formInput "searchForm.string" "" "text"/>
+            <@spring.formInput "searchForm.string" "" "text"/>
             <br>
-            <input type="submit" value="Search">
+            <input class="btn btn-dark mt-1" type="submit" value="Search">
         </form>
     </fieldset>
 </div>
 
+<div class="btn btn-dark">
+    <a  href="http://localhost:8080/" style="color: #f8f7cc">Main page</a>
+</div>
+
+<a href="/web/Section/create"><button class="btn btn-dark">Create</button></a>
 <div>
-    <table border="3", bgcolor="f0f8ff">
-        <tr>
+    <table border="3", class="table mt-4">
+        <tr class="thead-dark">
             <th>Id</th>
             <th>Name Of The Section<a href="/web/Section/sort"><button>Sort</button></a></th>
-            <th>External Communication With The Head Of The Section</th>
+            <th>The Head Of The Section</th>
             <th>The Floor</th>
-            <th>External Communication With Department Store</th>
-            <th>Date Of Creation</th>
-            <th>Date Of Modified</th>
+            <th>Outlet</th>
             <th>Description</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -40,15 +44,12 @@
                 <td>${section.externalCommunicationWithTheHeadOfTheSection.initials}</td>
                 <td>${section.theFloor}</td>
                 <td>${section.externalCommunicationWithDepartmentStore.name}</td>
-                <td>${section.dateOfCreation}</td>
-                <td>${section.dateOfModified}</td>
                 <td>${section.description}</td>
-                <td><a href="/web/Section/delete/${section.id}"><button>Delete</button></a></td>
-                <td><a href="/web/Section/edit/${section.id}"><button>Edit</button></a></td>
+                <td><a href="/web/Section/delete/${section.id}"><button class="btn btn-dark">Delete</button></a></td>
+                <td><a href="/web/Section/edit/${section.id}"><button class="btn btn-dark">Edit</button></a></td>
             </tr>
         </#list>
     </table>
-    <a href="/web/Section/create"><button>Create</button></a>
 </div>
 
 </body>

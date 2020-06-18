@@ -3,21 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Accounting For Goods Sold</title>
 </head>
-<body>
-<form name="accountigForGoodsSold" action="" method="POST">
-    AccountingForGoodsSold Offtake:<@spring.formInput "accountingForGoodsSoldForm.offtake" "" "text"/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="accountigForGoodsSold" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+    Offtake:<@spring.formInput "accountingForGoodsSoldForm.offtake" "" "text"/>
     <br>
-    AccountingForGoodsSold ExternalCommunicationWithTheDirectoryOfNomenclatureGoods:<@spring.formSingleSelect "accountingForGoodsSoldForm.externalCommunicationWithTheDirectoryOfNomenclatureGoods", mavs1, ""/>
+    Name Of Goods:<@spring.formSingleSelect "accountingForGoodsSoldForm.externalCommunicationWithTheDirectoryOfNomenclatureGoods", mavs1, ""/>
     <br>
-    AccountingForGoodsSold ExternalCommunicationWithTheSeller:<@spring.formSingleSelect  "accountingForGoodsSoldForm.externalCommunicationWithTheSeller", mavs2, ""/>
+    Seller:<@spring.formSingleSelect  "accountingForGoodsSoldForm.externalCommunicationWithTheSeller", mavs2, ""/>
     <br>
-    AccountingForGoodsSold ExternalCommunicationWithCustomerAccounting:<@spring.formSingleSelect  "accountingForGoodsSoldForm.externalCommunicationWithCustomerAccounting", mavs3, ""/>
+    Accounting For Buyers:<@spring.formSingleSelect  "accountingForGoodsSoldForm.externalCommunicationWithCustomerAccounting", mavs3, ""/>
     <br>
-    AccountingForGoodsSold Description:<@spring.formInput "accountingForGoodsSoldForm.description" "" "text"/>
+    Description:<@spring.formInput "accountingForGoodsSoldForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

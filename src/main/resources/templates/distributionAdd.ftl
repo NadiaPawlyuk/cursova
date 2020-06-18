@@ -3,21 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Distribution</title>
 </head>
-<body>
-<form name="distribution" action="" method="POST">
-    External Communication With The Nomenclature:<@spring.formSingleSelect "distributionForm.externalCommunicationWithTheNomenclature", mavs1, ""/>
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; background: #bab5bf; color: #262621">
+<form name="distribution" action="" method="POST" style="width: 700px; height: 500px; line-height: 2; margin-left: 15px; margin-top: 8px">
+     Name Of Goods:<@spring.formSingleSelect "distributionForm.externalCommunicationWithTheNomenclature", mavs1, ""/>
     <br>
-    Distribution Number Of Goods:<@spring.formInput "distributionForm.numberOfGoods" "" "text"/>
+     Number Of Goods:<@spring.formInput "distributionForm.numberOfGoods" "" "text"/>
     <br>
-    Distribution Price:<@spring.formInput  "distributionForm.price" "" "text"/>
+     Price:<@spring.formInput  "distributionForm.price" "" "text"/>
     <br>
-    Distribution External Communication With The Outlet:<@spring.formSingleSelect  "distributionForm.externalCommunicationWithTheOutlet", mavs2, ""/>
+     Outlet:<@spring.formSingleSelect  "distributionForm.externalCommunicationWithTheOutlet", mavs2, ""/>
     <br>
-    Distribution Description:<@spring.formInput  "distributionForm.description" "" "text"/>
+     Description:<@spring.formInput  "distributionForm.description" "" "text"/>
     <br>
-    <input type="submit" value="Create"/>
+    <input type="submit"value="Continue" style="width: 70px; height: 28px; background: #262621; color: #f8f7cc; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px"/>
 </form>
 </body>
 </html>

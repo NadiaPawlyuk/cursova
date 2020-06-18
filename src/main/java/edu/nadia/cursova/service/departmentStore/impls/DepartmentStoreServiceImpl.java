@@ -59,7 +59,7 @@ public class DepartmentStoreServiceImpl implements IDepartmentStoreService {
 
     public List<DepartmentStore> search(String word){
         List<DepartmentStore> found = this.getAll().stream()
-                .filter(departmentStore -> departmentStore.getNameOfTheStore().contains(word))
+                .filter(departmentStore -> departmentStore.getName().getName().contains(word))
                 .collect(Collectors.toList());
         return found;
     }
@@ -73,7 +73,7 @@ public class DepartmentStoreServiceImpl implements IDepartmentStoreService {
 
     private class DepartmentStoreNameComparator implements Comparator<DepartmentStore> {
         public int compare(DepartmentStore p1, DepartmentStore p2) {
-            return p1.getNameOfTheStore().compareTo(p2.getNameOfTheStore());
+            return p1.getName().getName().compareTo(p2.getName().getName());
         }
     }
 

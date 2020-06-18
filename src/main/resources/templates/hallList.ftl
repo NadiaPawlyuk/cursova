@@ -3,31 +3,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hall</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-<h3>Hall</h3>
+<body style="width: 100%; height: 100%; background: #bab5bf">
+<h3 class="text-center mb-4 pt-3">Hall</h3>
 
 <div>
-    <fieldset>
-        <legend>Find Halls</legend>
+    <fieldset class="text-center" style="color: #262621">
+        <legend>Find Hall By Name</legend>
         <form name="search" action="" method="POST">
-            Name Of The Hall:<@spring.formInput "searchForm.string" "" "text"/>
+           <@spring.formInput "searchForm.string" "" "text"/>
             <br>
-            <input type="submit" value="Search">
+            <input class="btn btn-dark mt-1" type="submit" value="Search">
         </form>
     </fieldset>
 </div>
 
+<div class="btn btn-dark">
+    <a  href="http://localhost:8080/" style="color: #f8f7cc">Main page</a>
+</div>
+
+<a href="/web/Hall/create"><button  class="btn btn-dark">Create</button ></a>
 <div>
-    <table border="3", bgcolor="f0f8ff">
-        <tr>
+    <table border="3" class="table mt-4">
+        <tr class="thead-dark">
             <th>ID</th>
             <th>Name Of The Hall<a href="/web/Hall/sort"><button>Sort</button></a></th>
             <th>Number Of Sellers</th>
-            <th>External Communication With Department Store</th>
-            <th>Date Of Creation</th>
-            <th>Date Of Modified</th>
             <th>Description</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -35,18 +38,14 @@
         <#list halls as hall>
             <tr>
                 <td>${hall.id}</td>
-                <td>${hall.nameOfTheHall}</td>
+                <td>${hall.nameOfTheHall.name}</td>
                 <td>${hall.numberOfSellers}</td>
-                <td>${hall.externalCommunicationWithDepartmentStore.name}</td>
-                <td>${hall.dateOfCreation}</td>
-                <td>${hall.dateOfModified}</td>
                 <td>${hall.description}</td>
-                <td><a href="/web/Hall/delete/${hall.id}"><button>Delete</button></a></td>
-                <td><a href="/web/Hall/edit/${hall.id}"><button>Edit</button></a></td>
+                <td><a href="/web/Hall/delete/${hall.id}"><button class="btn btn-dark">Delete</button></a></td>
+                <td><a href="/web/Hall/edit/${hall.id}"><button class="btn btn-dark">Edit</button></a></td>
             </tr>
         </#list>
     </table>
-    <a href="/web/Hall/create"><button>Create</button></a>
 </div>
 
 </body>

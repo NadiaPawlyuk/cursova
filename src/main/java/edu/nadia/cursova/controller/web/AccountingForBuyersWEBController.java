@@ -5,6 +5,7 @@ import edu.nadia.cursova.form.SearchForm;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.service.accountingForBuyers.impls.AccountingForBuyersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class AccountingForBuyersWEBController {
    @Autowired
     AccountingForBuyersServiceImpl service;
 
+   @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -30,6 +32,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -40,6 +43,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<AccountingForBuyers> accountingForBuyers = service.getAll();
@@ -50,6 +54,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -60,6 +65,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                 @PathVariable("id") String id) {
@@ -68,6 +74,7 @@ public class AccountingForBuyersWEBController {
         return "redirect:/web/AccountingForBuyers/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -76,6 +83,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("accountingForBuyersForm") AccountingForBuyersForm accountingForBuyersForm){
         AccountingForBuyers accountingForBuyers = new AccountingForBuyers();
@@ -88,6 +96,7 @@ public class AccountingForBuyersWEBController {
         return "redirect:/web/AccountingForBuyers/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -101,6 +110,7 @@ public class AccountingForBuyersWEBController {
         return "accountingForBuyersAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("accountingForBuyersForm") AccountingForBuyersForm accountingForBuyersForm){
         AccountingForBuyers accountingForBuyers = new AccountingForBuyers();
