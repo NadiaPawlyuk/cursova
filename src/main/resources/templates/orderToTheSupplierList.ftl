@@ -37,7 +37,7 @@
             <th>Edit</th>
         </tr>
         <#list orderToTheSupplier as orderToTheSupplier>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${orderToTheSupplier.id}</td>
                 <td>${orderToTheSupplier.theNameOfTheProduct}</td>
                 <td>${orderToTheSupplier.numberOfGoods}</td>

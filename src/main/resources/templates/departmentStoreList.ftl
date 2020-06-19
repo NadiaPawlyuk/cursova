@@ -43,7 +43,7 @@
             <th>Edit</th>
         </tr>
         <#list departmentStore as departmentStore>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${departmentStore.id}</td>
                 <td>${departmentStore.name.name}</td>
                 <td>${departmentStore.numberOfSections}</td>

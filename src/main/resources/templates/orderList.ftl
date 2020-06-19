@@ -39,7 +39,7 @@
             <th>Edit</th>
         </tr>
         <#list orders as order>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${order.id}</td>
                 <td>${order.externalCommunicationWithNomenclature.theNameOfTheProduct}</td>
                 <td>${order.numberOfGoods}</td>

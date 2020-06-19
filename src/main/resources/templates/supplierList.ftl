@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list suppliers as supplier>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${supplier.id}</td>
                 <td>${supplier.initials}</td>
                 <td>${supplier.dateOfBirthday}</td>

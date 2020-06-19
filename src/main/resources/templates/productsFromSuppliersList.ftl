@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list productsFromSuppliers as productsFromSupplier>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${productsFromSupplier.id}</td>
                 <td>${productsFromSupplier.externalCommunicationWithTheNomenclature.theNameOfTheProduct}</td>
                 <td>${productsFromSupplier.price}</td>

@@ -36,7 +36,7 @@
             <th>Edit</th>
         </tr>
         <#list halls as hall>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${hall.id}</td>
                 <td>${hall.nameOfTheHall.name}</td>
                 <td>${hall.numberOfSellers}</td>

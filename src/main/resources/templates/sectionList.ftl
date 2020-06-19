@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list sections as section>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${section.id}</td>
                 <td>${section.nameOfTheSection}</td>
                 <td>${section.externalCommunicationWithTheHeadOfTheSection.initials}</td>

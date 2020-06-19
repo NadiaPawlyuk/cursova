@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list organizationOfTrade as organizationOfTrade>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${organizationOfTrade.id}</td>
                 <td>${organizationOfTrade.nameOfOrganization}</td>
                 <td>${organizationOfTrade.phoneNumber}</td>

@@ -36,7 +36,7 @@
             <th>Edit</th>
         </thead>
         <#list accountingForBuyers as accountingForBuyer>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td style="background: #f8f7cc">${accountingForBuyer.id}</td>
                 <td style="background: #f8f7cc">${accountingForBuyer.initials}</td>
                 <td style="background: #f8f7cc">${accountingForBuyer.numberOfPhone}</td>

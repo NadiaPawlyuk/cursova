@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list distributions as distribution>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${distribution.id}</td>
                 <td>${distribution.externalCommunicationWithTheNomenclature.theNameOfTheProduct}</td>
                 <td>${distribution.numberOfGoods}</td>

@@ -41,7 +41,7 @@
             <th>Edit</th>
         </tr>
         <#list theHeadOfTheSection as theHeadOfTheSection>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${theHeadOfTheSection.id}</td>
                 <td>${theHeadOfTheSection.initials}</td>
                 <td>${theHeadOfTheSection.dateOfBirth}</td>

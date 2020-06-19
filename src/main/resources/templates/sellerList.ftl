@@ -41,7 +41,7 @@
             <th>Edit</th>
         </tr>
         <#list sellers as seller>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${seller.id}</td>
                 <td>${seller.initials}</td>
                 <td>${seller.dateOfBirthday}</td>

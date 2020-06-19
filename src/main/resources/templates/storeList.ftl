@@ -42,7 +42,7 @@
             <th>Edit</th>
         </tr>
         <#list stores as store>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${store.id}</td>
                 <td>${store.nameOfTheStore.name}</td>
                 <td>${store.numberOfSellers}</td>

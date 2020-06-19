@@ -36,7 +36,7 @@
             <th>Edit</th>
         </tr>
         <#list outlets as outlet>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${outlet.id}</td>
                 <td>${outlet.name}</td>
                 <td>${outlet.kindOfOutlet}</td>

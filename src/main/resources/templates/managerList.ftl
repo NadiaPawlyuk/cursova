@@ -41,7 +41,7 @@
             <th>Edit</th>
         </tr>
         <#list managers as manager>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${manager.id}</td>
                 <td>${manager.initials}</td>
                 <td>${manager.dateOfBirthday}</td>

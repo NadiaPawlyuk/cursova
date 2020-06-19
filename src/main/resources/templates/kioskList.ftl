@@ -41,7 +41,7 @@
             <th>Edit</th>
         </tr>
         <#list kiosks as kiosk>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${kiosk.id}</td>
                 <td>${kiosk.nameOfTheKiosk.name}</td>
                 <td>${kiosk.numberOfSellers}</td>

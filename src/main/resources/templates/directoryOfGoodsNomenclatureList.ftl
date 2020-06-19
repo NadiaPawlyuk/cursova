@@ -35,7 +35,7 @@
             <th>Edit</th>
         </tr>
         <#list directoryOfGoodsNomenclature as directoryOfGoodsNomenclature>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${directoryOfGoodsNomenclature.id}</td>
                 <td>${directoryOfGoodsNomenclature.theNameOfTheProduct}</td>
                 <td>${directoryOfGoodsNomenclature.description}</td>

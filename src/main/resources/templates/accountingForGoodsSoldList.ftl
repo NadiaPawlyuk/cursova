@@ -38,7 +38,7 @@
             <th>Edit</th>
         </tr>
         <#list accountingForGoodsSold as accountingForGoodsSold>
-            <tr>
+            <tr style="background: #f8f7cc">
                 <td>${accountingForGoodsSold.id}</td>
                 <td>${accountingForGoodsSold.offtake}</td>
                 <td>${accountingForGoodsSold.externalCommunicationWithTheDirectoryOfNomenclatureGoods.theNameOfTheProduct}</td>
