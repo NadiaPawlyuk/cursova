@@ -9,6 +9,7 @@ import edu.nadia.cursova.service.departmentStore.impls.DepartmentStoreServiceImp
 import edu.nadia.cursova.service.departmentStore.interfaces.IDepartmentStoreService;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class DepartmentStoreWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model) {
         List<DepartmentStore> list = service.getAll();
@@ -38,6 +40,7 @@ public class DepartmentStoreWEBController {
         return "departmentStoreList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -48,6 +51,7 @@ public class DepartmentStoreWEBController {
         return "departmentStoreList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<DepartmentStore> departmentStores = service.getAll();
@@ -58,6 +62,7 @@ public class DepartmentStoreWEBController {
         return "departmentStoreList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -68,6 +73,7 @@ public class DepartmentStoreWEBController {
         return "departmentStoreList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -76,6 +82,7 @@ public class DepartmentStoreWEBController {
         return "redirect:/web/DepartmentStore/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -88,6 +95,7 @@ public class DepartmentStoreWEBController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("departmentStoreForm") DepartmentStoreForm departmentStoreForm){
         DepartmentStore departmentStore = new DepartmentStore();
@@ -107,6 +115,7 @@ public class DepartmentStoreWEBController {
         return "redirect:/web/DepartmentStore/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -129,6 +138,7 @@ public class DepartmentStoreWEBController {
         return "departmentStoreAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("departmentStoreForm") DepartmentStoreForm departmentStoreForm){
         DepartmentStore departmentStore = new DepartmentStore();

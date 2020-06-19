@@ -6,6 +6,7 @@ import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import edu.nadia.cursova.service.section.impls.SectionServiceImpl;
 import edu.nadia.cursova.service.theHeadOfTheSection.impls.TheHeadOfTheSectionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class SectionWEBController {
    @Autowired
     OutletServiceImpl outletService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -39,6 +41,7 @@ public class SectionWEBController {
         return "sectionList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -49,6 +52,7 @@ public class SectionWEBController {
         return "sectionList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<Section> sections = service.getAll();
@@ -59,6 +63,7 @@ public class SectionWEBController {
         return "sectionList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -69,6 +74,7 @@ public class SectionWEBController {
         return "sectionList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -77,6 +83,7 @@ public class SectionWEBController {
         return "redirect:/web/Section/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -91,6 +98,7 @@ public class SectionWEBController {
         return "sectionAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("sectionForm") SectionForm sectionForm){
         Section section = new Section();
@@ -106,6 +114,7 @@ public class SectionWEBController {
         return "redirect:/web/Section/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -127,6 +136,7 @@ public class SectionWEBController {
         return "sectionAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("sectionForm") SectionForm sectionForm){
         Section section = new Section();

@@ -7,6 +7,7 @@ import edu.nadia.cursova.model.Manager;
 import edu.nadia.cursova.model.OrganizationOfTrade;
 import edu.nadia.cursova.service.organizationOfTrade.impls.OrganizationOfTradeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class OrganizationOfTradeWEBController {
    @Autowired
     OrganizationOfTradeServiceImpl service;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -32,6 +34,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -42,6 +45,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<OrganizationOfTrade> organizationOfTrades = service.getAll();
@@ -52,6 +56,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -62,6 +67,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -70,6 +76,7 @@ public class OrganizationOfTradeWEBController {
         return "redirect:/web/OrganizationOfTrade/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -78,6 +85,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("organizationOfTradeForm") OrganizationOfTradeForm organizationOfTradeForm){
         OrganizationOfTrade organizationOfTrade = new OrganizationOfTrade();
@@ -91,6 +99,7 @@ public class OrganizationOfTradeWEBController {
         return "redirect:/web/OrganizationOfTrade/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -105,6 +114,7 @@ public class OrganizationOfTradeWEBController {
         return "organizationOfTradeAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("organizationOfTradeForm") OrganizationOfTradeForm organizationOfTradeForm){
         OrganizationOfTrade organizationOfTrade = new OrganizationOfTrade();

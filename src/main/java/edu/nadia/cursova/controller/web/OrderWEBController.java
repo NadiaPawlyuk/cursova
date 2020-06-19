@@ -7,6 +7,7 @@ import edu.nadia.cursova.service.manager.impls.ManagerServiceImpl;
 import edu.nadia.cursova.service.order.impls.OrderServiceImpl;
 import edu.nadia.cursova.service.supplier.impls.SupplierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,7 @@ public class OrderWEBController {
     @Autowired
     ManagerServiceImpl managerService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -43,6 +45,7 @@ public class OrderWEBController {
         return "orderList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -53,6 +56,7 @@ public class OrderWEBController {
         return "orderList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<Order> orders = service.getAll();
@@ -63,6 +67,7 @@ public class OrderWEBController {
         return "orderList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -73,6 +78,7 @@ public class OrderWEBController {
         return "orderList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -81,6 +87,7 @@ public class OrderWEBController {
         return "redirect:/web/Order/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -98,6 +105,7 @@ public class OrderWEBController {
         return "orderAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("distributionForm") OrderForm orderForm){
         Order order = new Order();
@@ -115,6 +123,7 @@ public class OrderWEBController {
         return "redirect:/web/Order/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -139,6 +148,7 @@ public class OrderWEBController {
         return "orderAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("orderForm") OrderForm orderForm){
         Order order = new Order();

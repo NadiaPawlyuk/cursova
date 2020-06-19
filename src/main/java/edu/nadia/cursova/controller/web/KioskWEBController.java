@@ -5,6 +5,7 @@ import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.kiosk.impls.KioskServiceImpl;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,8 @@ public class KioskWEBController {
     @Autowired
     OutletServiceImpl outletService;
 
-   @RequestMapping(value = "/get/list", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
         List<Kiosk> list = service.getAll();
@@ -35,6 +37,7 @@ public class KioskWEBController {
         return "kioskList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -45,6 +48,7 @@ public class KioskWEBController {
         return "kioskList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<Kiosk> kiosks = service.getAll();
@@ -55,6 +59,7 @@ public class KioskWEBController {
         return "kioskList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -65,6 +70,7 @@ public class KioskWEBController {
         return "kioskList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -73,6 +79,7 @@ public class KioskWEBController {
         return "redirect:/web/Kiosk/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -84,6 +91,7 @@ public class KioskWEBController {
         return "kioskAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("kioskForm") KioskForm kioskForm){
         Kiosk kiosk = new Kiosk();
@@ -102,6 +110,7 @@ public class KioskWEBController {
         return "redirect:/web/Kiosk/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -123,6 +132,7 @@ public class KioskWEBController {
         return "kioskAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("kioskForm") KioskForm kioskForm){
         Kiosk kiosk = new Kiosk();

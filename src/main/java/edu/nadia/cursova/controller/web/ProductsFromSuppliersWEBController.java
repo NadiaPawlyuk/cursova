@@ -6,6 +6,7 @@ import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfG
 import edu.nadia.cursova.service.productsFromSuppliers.impls.ProductsFromSuppliersServiceImpl;
 import edu.nadia.cursova.service.supplier.impls.SupplierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class ProductsFromSuppliersWEBController {
     @Autowired
     SupplierServiceImpl supplierService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -39,6 +41,7 @@ public class ProductsFromSuppliersWEBController {
         return "productsFromSuppliersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -49,6 +52,7 @@ public class ProductsFromSuppliersWEBController {
         return "productsFromSuppliersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<ProductsFromSuppliers> productsFromSuppliers = service.getAll();
@@ -59,6 +63,7 @@ public class ProductsFromSuppliersWEBController {
         return "productsFromSuppliersList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -69,6 +74,7 @@ public class ProductsFromSuppliersWEBController {
         return "productsFromSuppliersList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -77,6 +83,7 @@ public class ProductsFromSuppliersWEBController {
         return "redirect:/web/ProductsFromSuppliers/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     String create(Model model) {
         ProductsFromSuppliersForm productsFromSuppliersForm = new ProductsFromSuppliersForm();
@@ -90,6 +97,7 @@ public class ProductsFromSuppliersWEBController {
         return "productsFromSuppliersAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("productsFromSuppliersForm") ProductsFromSuppliersForm productsFromSuppliersForm) {
         ProductsFromSuppliers productsFromSuppliers = new ProductsFromSuppliers();
@@ -105,6 +113,7 @@ public class ProductsFromSuppliersWEBController {
         return "redirect:/web/ProductsFromSuppliers/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -126,6 +135,7 @@ public class ProductsFromSuppliersWEBController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("productsFromSuppliersForm") ProductsFromSuppliersForm productsFromSuppliersForm){
         ProductsFromSuppliers productsFromSuppliers = new ProductsFromSuppliers();

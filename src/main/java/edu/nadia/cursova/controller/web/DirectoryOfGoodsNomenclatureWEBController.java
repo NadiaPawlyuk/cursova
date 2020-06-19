@@ -10,6 +10,7 @@ import edu.nadia.cursova.model.DepartmentStore;
 import edu.nadia.cursova.model.DirectoryOfGoodsNomenclature;
 import edu.nadia.cursova.service.directoryOfGoodsNomenclature.impls.DirectoryOfGoodsNomenclatureServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
     @Autowired
     DirectoryOfGoodsNomenclatureServiceImpl service;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -36,6 +38,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "directoryOfGoodsNomenclatureList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -46,6 +49,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "directoryOfGoodsNomenclatureList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<DirectoryOfGoodsNomenclature> directoryOfGoodsNomenclatures = service.getAll();
@@ -56,6 +60,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "directoryOfGoodsNomenclatureList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -66,6 +71,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "directoryOfGoodsNomenclatureList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -74,6 +80,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "redirect:/web/DirectoryOfGoodsNomenclature/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -83,6 +90,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("directoryOfGoodsNomenclatureForm") DirectoryOfGoodsNomenclatureForm directoryOfGoodsNomenclatureForm){
         DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = new DirectoryOfGoodsNomenclature();
@@ -93,6 +101,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "redirect:/web/DirectoryOfGoodsNomenclature/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -104,6 +113,7 @@ public class DirectoryOfGoodsNomenclatureWEBController {
         return "directoryOfGoodsNomenclatureAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("directoryOfGoodsNomenclatureForm") DirectoryOfGoodsNomenclatureForm directoryOfGoodsNomenclatureForm){
         DirectoryOfGoodsNomenclature directoryOfGoodsNomenclature = new DirectoryOfGoodsNomenclature();

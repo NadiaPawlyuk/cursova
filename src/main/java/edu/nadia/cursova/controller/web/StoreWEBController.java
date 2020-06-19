@@ -5,6 +5,7 @@ import edu.nadia.cursova.model.*;
 import edu.nadia.cursova.service.outlet.impls.OutletServiceImpl;
 import edu.nadia.cursova.service.store.impls.StoreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class StoreWEBController {
     OutletServiceImpl outletService;
 
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     String getAll(Model model)
     {
@@ -36,6 +38,7 @@ public class StoreWEBController {
         return "storeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/get/list", method = RequestMethod.POST)
     String search(Model model,
                   @ModelAttribute("searchForm") SearchForm searchForm){
@@ -46,6 +49,7 @@ public class StoreWEBController {
         return "storeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
     public String showSorted(Model model) {
         List<Store> stores = service.getAll();
@@ -56,6 +60,7 @@ public class StoreWEBController {
         return "storeList";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @RequestMapping(value = "/sort", method = RequestMethod.POST)
     public String searchSorted(Model model,
                                @ModelAttribute("searchForm") SearchForm searchForm) {
@@ -66,6 +71,7 @@ public class StoreWEBController {
         return "storeList";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/delete/{id}")
     String delete(Model model,
                   @PathVariable("id") String id) {
@@ -74,6 +80,7 @@ public class StoreWEBController {
         return "redirect:/web/Store/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create",  method = RequestMethod.GET)
     String create(Model model)
     {
@@ -85,6 +92,7 @@ public class StoreWEBController {
         return "storeAdd";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute("storeForm") StoreForm storeForm){
         Store store = new Store();
@@ -103,6 +111,7 @@ public class StoreWEBController {
         return "redirect:/web/Store/get/list";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model,
                 @PathVariable("id") String id){
@@ -125,6 +134,7 @@ public class StoreWEBController {
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(Model model,  @PathVariable("id") String id, @ModelAttribute("storeForm") StoreForm storeForm){
         Store store = new Store();
