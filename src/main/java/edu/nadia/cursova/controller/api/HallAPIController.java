@@ -1,6 +1,5 @@
 package edu.nadia.cursova.controller.api;
 
-import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.model.Hall;
 import edu.nadia.cursova.service.hall.impls.HallServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

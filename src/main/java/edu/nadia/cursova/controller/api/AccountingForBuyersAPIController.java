@@ -3,7 +3,6 @@ package edu.nadia.cursova.controller.api;
 import edu.nadia.cursova.model.AccountingForBuyers;
 import edu.nadia.cursova.service.accountingForBuyers.impls.AccountingForBuyersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +38,4 @@ public class AccountingForBuyersAPIController {
     AccountingForBuyers edit(@RequestBody AccountingForBuyers accountingForBuyers){
         return service.edit(accountingForBuyers);
     }
-
 }
