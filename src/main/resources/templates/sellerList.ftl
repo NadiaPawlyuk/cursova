@@ -21,7 +21,7 @@
 </div>
 
 <div class="btn btn-dark">
-    <a  href="http://localhost:8080/" style="color: #f8f7cc">Main page</a>
+    <a  href="https://organizationoftrade.herokuapp.com/" style="color: #f8f7cc">Main page</a>
 </div>
 
 <a href="/web/Seller/create"><button class="btn btn-dark">Create</button></a>
